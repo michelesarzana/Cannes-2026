@@ -32,6 +32,10 @@ nav{position:sticky;top:0;z-index:1000;background:var(--nav);
   border-radius:980px;padding:6px 16px;font-size:13px;font-weight:700;cursor:pointer;
   font-family:inherit;letter-spacing:-.2px;transition:transform var(--t),opacity var(--t)}
 .nav-lucky:hover{transform:scale(1.04);opacity:.9}
+.nav-about{background:none;border:none;font-size:14px;color:var(--mid);cursor:pointer;
+  font-family:inherit;font-weight:500;padding:4px 8px;border-radius:6px;
+  transition:color var(--t)}
+.nav-about:hover{color:var(--black)}
 .nav-back{display:none;align-items:center;gap:6px;font-size:14px;color:var(--blue);
   cursor:pointer;background:none;border:none;font-family:inherit;padding:4px 0}
 .nav-back:hover{opacity:.7}
@@ -139,8 +143,10 @@ nav{position:sticky;top:0;z-index:1000;background:var(--nav);
 
 /* TWO-COL LAYOUT inside cat-block */
 .cat-block-body{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
+.cat-block-body.multi-gp{grid-template-columns:1fr 280px}
 .cat-gp-col{min-width:0}
-.cat-gp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.cat-gp-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.cat-gp-grid.multi{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 .cat-medals-col{background:#fff;border-radius:16px;box-shadow:var(--shadow);
   overflow:hidden;border:1px solid rgba(0,0,0,0.05)}
 .cat-medals-col-header{font-size:11px;font-weight:700;text-transform:uppercase;
@@ -365,6 +371,94 @@ nav{position:sticky;top:0;z-index:1000;background:var(--nav);
   background:repeating-linear-gradient(to bottom,transparent 0,transparent 3px,rgba(0,0,0,.08) 3px,rgba(0,0,0,.08) 4px);
   opacity:.3}
 
+/* ===== ABOUT PAGE ===== */
+.about-hero{background:#000;color:#fff;padding:100px 24px 80px;position:relative;overflow:hidden}
+.about-hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 20% 50%,#0d1a3a,#000)}
+.about-hero-inner{max-width:1100px;margin:0 auto;display:grid;
+  grid-template-columns:1fr 340px;gap:64px;align-items:center}
+.about-hero-text{position:relative}
+.about-hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1.5px;color:var(--blue);margin-bottom:16px}
+.about-hero-name{font-size:clamp(44px,7vw,80px);font-weight:700;letter-spacing:-2.5px;
+  line-height:.95;margin-bottom:20px;
+  background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,0.5) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.about-hero-role{font-size:18px;color:rgba(255,255,255,0.55);margin-bottom:32px;
+  letter-spacing:-.2px;line-height:1.5}
+.about-hero-quote{position:relative;font-size:clamp(16px,2vw,20px);
+  color:rgba(255,255,255,0.8);line-height:1.6;font-style:italic;
+  padding-left:20px;border-left:2px solid var(--blue);max-width:520px}
+.about-hero-photo{position:relative;z-index:1}
+.about-hero-photo-inner{width:100%;aspect-ratio:3/4;border-radius:24px;overflow:hidden;
+  background:linear-gradient(135deg,#1a2a4a,#0d3b5e);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 32px 80px rgba(0,0,0,.5)}
+.about-avatar-letter{font-size:120px;font-weight:700;color:rgba(255,255,255,0.12);
+  line-height:1;user-select:none}
+.about-avatar-initials{position:absolute;font-size:48px;font-weight:700;
+  color:#fff;letter-spacing:-2px}
+.about-social-links{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.about-social-link{display:inline-flex;align-items:center;gap:6px;
+  color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;text-decoration:none;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:980px;padding:6px 14px;transition:background var(--t),color var(--t)}
+.about-social-link:hover{background:rgba(255,255,255,0.16);color:#fff}
+
+.about-body{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+
+/* ABOUT SECTION BLOCK */
+.about-section{padding:64px 0;border-bottom:1px solid rgba(0,0,0,0.07)}
+.about-section:last-child{border-bottom:none}
+.about-section-grid{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start}
+.about-section-label{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1.2px;color:var(--mid);padding-top:6px;position:sticky;top:68px}
+.about-section-content{}
+.about-section h2{font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.6px;
+  line-height:1.15;margin-bottom:20px}
+.about-section p{font-size:17px;line-height:1.72;color:#3a3a3c;margin-bottom:16px}
+.about-section p:last-child{margin-bottom:0}
+
+/* PROJECT STATS BAR */
+.about-stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(0,0,0,0.08);border-radius:16px;overflow:hidden;margin:32px 0}
+.about-stat-cell{background:#fff;padding:24px 20px;text-align:center}
+.about-stat-n{font-size:32px;font-weight:700;letter-spacing:-1px;color:var(--black);margin-bottom:4px}
+.about-stat-l{font-size:11px;color:var(--mid);text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+
+/* TECH PILLS */
+.about-tech-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.about-tech-pill{background:rgba(0,113,227,0.08);color:var(--blue);border-radius:980px;
+  padding:6px 14px;font-size:13px;font-weight:500}
+
+/* CAREER TIMELINE */
+.career-timeline{margin-top:8px}
+.career-item{display:grid;grid-template-columns:110px 1fr;gap:20px;margin-bottom:32px;
+  padding-bottom:32px;border-bottom:1px solid rgba(0,0,0,0.06)}
+.career-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.career-date{font-size:12px;font-weight:600;color:var(--mid);padding-top:3px;
+  letter-spacing:-.2px;line-height:1.4}
+.career-company{font-size:16px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px}
+.career-role{font-size:14px;color:var(--blue);font-weight:500;margin-bottom:6px}
+.career-desc{font-size:14px;color:#515154;line-height:1.6}
+
+/* SKILLS GRID */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px;margin-top:8px}
+.skill-card{background:#fff;border-radius:12px;padding:16px 18px;
+  border:1px solid rgba(0,0,0,0.06);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.skill-icon{font-size:22px;margin-bottom:8px}
+.skill-name{font-size:13px;font-weight:600;color:var(--black)}
+
+@media(max-width:768px){
+  .about-hero-inner{grid-template-columns:1fr;gap:32px}
+  .about-hero-photo{display:none}
+  .about-section-grid{grid-template-columns:1fr;gap:16px}
+  .about-section-label{position:static}
+  .about-stats-bar{grid-template-columns:repeat(2,1fr)}
+  .career-item{grid-template-columns:1fr;gap:4px}
+}
+
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -388,6 +482,7 @@ footer{background:#f5f5f7;border-top:1px solid rgba(0,0,0,0.08);padding:48px 24p
   <div class="nav-inner">
     <a class="nav-logo" onclick="navigate('/')"><span>🦁</span> Cannes Lions 2026</a>
     <button class="nav-lucky" onclick="navigate('/lucky')">🎲 I'm Feeling Lucky</button>
+    <button class="nav-about" onclick="navigate('/about')">About</button>
     <button class="nav-back" id="nav-back" onclick="history.back()">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
       Indietro
@@ -634,21 +729,21 @@ const TRACKS = {
 };
 
 const SPECIAL = [
- {rank:1,name:'LePub, Milan',label:"Agency of the Year"},
- {rank:2,name:'VML New York',label:"Agency of the Year"},
- {rank:3,name:'Rethink Toronto',label:"Agency of the Year"},
- {rank:1,name:'Ogilvy',label:"Network of the Year"},
- {rank:2,name:'VML',label:"Network of the Year"},
- {rank:3,name:'TBWA Worldwide',label:"Network of the Year"},
- {rank:1,name:'Rethink',label:"Independent Network of the Year"},
- {rank:2,name:'Mother',label:"Independent Network of the Year"},
- {rank:3,name:"Wieden+Kennedy",label:"Independent Network of the Year"},
- {rank:1,name:'MJZ USA',label:"Palme d'Or"},
- {rank:2,name:'Biscuit Filmworks UK',label:"Palme d'Or"},
- {rank:3,name:'CANADA, Spain',label:"Palme d'Or"},
- {rank:1,name:'Heineken',label:'Creative Brand of the Year'},
- {rank:2,name:'KitKat',label:'Creative Brand of the Year'},
- {rank:3,name:'IKEA',label:'Creative Brand of the Year'},
+ {rank:1,name:'LePub, Milan',label:"Agency of the Year",url:'https://www.lepub.com'},
+ {rank:2,name:'VML New York',label:"Agency of the Year",url:'https://www.vml.com'},
+ {rank:3,name:'Rethink Toronto',label:"Agency of the Year",url:'https://rethinkideas.com'},
+ {rank:1,name:'Ogilvy',label:"Network of the Year",url:'https://www.ogilvy.com'},
+ {rank:2,name:'VML',label:"Network of the Year",url:'https://www.vml.com'},
+ {rank:3,name:'TBWA Worldwide',label:"Network of the Year",url:'https://www.tbwa.com'},
+ {rank:1,name:'Rethink',label:"Independent Network of the Year",url:'https://rethinkideas.com'},
+ {rank:2,name:'Mother',label:"Independent Network of the Year",url:'https://motherlondon.com'},
+ {rank:3,name:"Wieden+Kennedy",label:"Independent Network of the Year",url:'https://www.wk.com'},
+ {rank:1,name:'MJZ USA',label:"Palme d'Or",url:'https://www.mjz.com'},
+ {rank:2,name:'Biscuit Filmworks UK',label:"Palme d'Or",url:'https://www.biscuitfilmworks.com'},
+ {rank:3,name:'CANADA, Spain',label:"Palme d'Or",url:'https://canadafilm.com'},
+ {rank:1,name:'Heineken',label:'Creative Brand of the Year',url:'https://www.heineken.com'},
+ {rank:2,name:'KitKat',label:'Creative Brand of the Year',url:'https://www.kitkat.com'},
+ {rank:3,name:'IKEA',label:'Creative Brand of the Year',url:'https://www.ikea.com'},
 ];
 </script>
 <script>
@@ -855,10 +950,10 @@ function renderHome(){
           </div>
           <span class="cat-block-link" onclick="navigate('/category/${cat.id}')">Tutti i vincitori &rarr;</span>
         </div>
-        <div class="cat-block-body">
+        <div class="cat-block-body${gp.length>1?' multi-gp':''}">
           <div class="cat-gp-col">
             ${gp.length
-              ? `<div class="cat-gp-grid">${gp.map(c=>winCard(c,cat.icon,false)).join('')}</div>`
+              ? `<div class="cat-gp-grid${gp.length>1?' multi':''}">${gp.map(c=>winCard(c,cat.icon,false)).join('')}</div>`
               : `<div style="font-size:13px;color:var(--mid);padding:12px 0">Nessun Grand Prix assegnato in questa categoria</div>`
             }
           </div>
@@ -933,9 +1028,17 @@ function renderHome(){
     html+=`<div style="margin-top:32px"><div class="track-label" style="color:#8e8e93;margin-bottom:12px">${label}</div>
     <div class="special-grid">`;
     items.forEach(s=>{
-      html+=`<div class="special-card"><div class="special-rank">${s.rank}</div>
-        <div class="special-name">${s.name}</div>
-        <div class="special-label">${s.label}</div></div>`;
+      html+=`<div class="special-card" ${s.url?`onclick="window.open('${s.url}','_blank')" style="cursor:pointer"`:''}
+        title="${s.url?'Visita il sito →':''}">
+        <div class="special-rank">${s.rank}</div>
+        <div class="special-name">${s.url
+          ?`<a href="${s.url}" target="_blank" onclick="event.stopPropagation()"
+              style="color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25)"
+              onmouseover="this.style.borderBottomColor='rgba(255,255,255,0.7)'"
+              onmouseout="this.style.borderBottomColor='rgba(255,255,255,0.25)'">${s.name}</a>`
+          :s.name}</div>
+        <div class="special-label">${s.label}</div>
+      </div>`;
     });
     html+=`</div></div>`;
   });
@@ -1225,12 +1328,244 @@ function luckyRoll(){
   },380);
 }
 
+// ===================== ABOUT PAGE =====================
+function renderAbout(){
+  navMode('back');
+  document.getElementById('app').innerHTML=`
+<div class="about-hero">
+  <div class="about-hero-inner">
+    <div class="about-hero-text">
+      <div class="about-hero-eyebrow">Il progetto · L'autore</div>
+      <div class="about-hero-name">Michele<br>Sarzana</div>
+      <div class="about-hero-role">Head of Brand Marketing,<br>Communication &amp; eCommerce <strong style="color:rgba(255,255,255,0.8)">@Fastweb</strong></div>
+      <blockquote class="about-hero-quote">
+        "I believe in creativity and branding as a mix of intuition, technology, analysis and risk.
+        Measurability, KPIs and traceability are my keywords, imagination and innovation my main work tools.
+        <em>Great ideas need to be scary.</em>"
+      </blockquote>
+      <div class="about-social-links">
+        <a class="about-social-link" href="https://www.linkedin.com/in/michelesarzana/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a class="about-social-link" href="http://www.michelesarzana.it" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          michelesarzana.it
+        </a>
+        <a class="about-social-link" href="https://www.instagram.com/michelesarzana" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          Instagram
+        </a>
+        <a class="about-social-link" href="mailto:michele.sarzana@gmail.com">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
+    <div class="about-hero-photo">
+      <div class="about-hero-photo-inner">
+        <div class="about-avatar-letter">M</div>
+        <div class="about-avatar-initials">MS</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about-body">
+
+  <!-- IL PROGETTO -->
+  <div class="about-section reveal">
+    <div class="about-section-grid">
+      <div class="about-section-label">Il progetto</div>
+      <div class="about-section-content">
+        <h2>Cannes Lions 2026 — Winners Archive</h2>
+        <p>Questo sito nasce da una domanda semplice: <strong>perché i vincitori del festival più importante della creatività pubblicitaria mondiale sono così difficili da esplorare?</strong> I dati ci sono, le campagne anche — ma l'esperienza di navigarle è spesso dispersiva, frammentata tra comunicati stampa, PDF e siti di categoria.</p>
+        <p>L'idea è stata raccogliere tutti i Grand Prix, Gold, Silver e Bronze di Cannes Lions 2026 in un'unica esperienza digitale — organizzata per categoria, track e livello di premio — con video, descrizioni, credits e pagine dedicate per ogni case study.</p>
+        <p>Il sito è costruito come <strong>Single Page Application</strong> con routing hash-based, completamente statico su GitHub Pages — zero backend, zero dipendenze esterne, massima velocità. Il design si ispira al sistema visivo di Apple: tipografia system-font, whitespace generoso, card layout, transizioni fluide.</p>
+
+        <div class="about-stats-bar">
+          <div class="about-stat-cell">
+            <div class="about-stat-n">29</div>
+            <div class="about-stat-l">Categorie</div>
+          </div>
+          <div class="about-stat-cell">
+            <div class="about-stat-n">32</div>
+            <div class="about-stat-l">Grand Prix</div>
+          </div>
+          <div class="about-stat-cell">
+            <div class="about-stat-n">130+</div>
+            <div class="about-stat-l">Case studies</div>
+          </div>
+          <div class="about-stat-cell">
+            <div class="about-stat-n">1</div>
+            <div class="about-stat-l">File HTML</div>
+          </div>
+        </div>
+
+        <p>Il progetto include una <strong>pagina "I'm Feeling Lucky"</strong> che estrae un vincitore casuale dal pool — filtrabile per tipologia di premio — e una <strong>barra di ricerca</strong> stile Spotlight (⌘K) che permette di filtrare per testo, categoria, paese, agenzia e livello di premio.</p>
+        <p>Realizzato interamente con <strong>Claude</strong> di Anthropic in una sessione di lavoro in Cowork mode.</p>
+
+        <div class="about-tech-list">
+          <span class="about-tech-pill">HTML / CSS / JavaScript</span>
+          <span class="about-tech-pill">SPA + Hash Routing</span>
+          <span class="about-tech-pill">GitHub Pages</span>
+          <span class="about-tech-pill">YouTube Embed API</span>
+          <span class="about-tech-pill">Vimeo Player API</span>
+          <span class="about-tech-pill">Apple Design System</span>
+          <span class="about-tech-pill">Claude AI (Anthropic)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHI SONO -->
+  <div class="about-section reveal">
+    <div class="about-section-grid">
+      <div class="about-section-label">Chi sono</div>
+      <div class="about-section-content">
+        <h2>Marketing, creatività e un po' di codice</h2>
+        <p>Mi occupo di brand marketing e comunicazione da oltre 15 anni, in bilico costante tra strategia, creatività e tecnologia. Oggi guido il team di <strong>Brand Marketing, Communication &amp; eCommerce di Fastweb</strong> — dalla definizione della brand strategy alla creatività pubblicitaria (TVC, OOH, digital), fino alla gestione del canale eCommerce e delle proprietà digitali.</p>
+        <p>Ho costruito la mia carriera partendo dal digitale e dal social media marketing, quando questi erano ancora "il futuro della comunicazione" — e nel tempo ho visto quel futuro diventare il presente, poi la normalità. Oggi la sfida è di nuovo trovare i bordi, spingere dove non si è ancora andati.</p>
+        <p>Credo che le idee migliori nascano nell'intersezione tra dati e intuizione, tra rigore analitico e coraggio creativo. <em>Great ideas need to be scary.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARRIERA -->
+  <div class="about-section reveal">
+    <div class="about-section-grid">
+      <div class="about-section-label">Carriera</div>
+      <div class="about-section-content">
+        <div class="career-timeline">
+          <div class="career-item">
+            <div class="career-date">2022 →<br>Oggi</div>
+            <div>
+              <div class="career-company">Fastweb</div>
+              <div class="career-role">Head of Brand Marketing, Communication &amp; eCommerce</div>
+              <div class="career-desc">Brand &amp; Communication strategy, brand concept, reputation, advertising creativity e campagne da TVC a social. Responsabile eCommerce team, digital sales, upselling &amp; cross-selling e digital properties. Media Strategy su tutto il funnel: branding, awareness, consideration, sales.</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-date">2018 →<br>2022</div>
+            <div>
+              <div class="career-company">Fastweb</div>
+              <div class="career-role">Manager of Advertising &amp; Digital Hub</div>
+              <div class="career-desc">Advertising e ATL strategy dal concept all'implementazione: TVC, OOH, digital OOH, eventi, digital &amp; social creativity. Digital Marketing: programmatic, social, search e performance marketing. Data analytics (Google Analytics, DMP, listening tools).</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-date">2017 →<br>2018</div>
+            <div>
+              <div class="career-company">Fastweb</div>
+              <div class="career-role">Manager of Digital Marketing</div>
+              <div class="career-desc">Digital Marketing strategy omnicanale, sinergie tra social, search e performance marketing. Sviluppo di canali di contatto digitali con i clienti, incluse soluzioni innovative come il ChatBOT Marvin su Facebook.</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-date">2014 →<br>2017</div>
+            <div>
+              <div class="career-company">Fastweb</div>
+              <div class="career-role">Manager of Social Marketing</div>
+              <div class="career-desc">Social strategy e implementazione, editorial plan, social advertising. Social &amp; web monitoring per analisi delle conversazioni dei clienti. Customer experience integrata tra social e company journey.</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-date">2012 →<br>2014</div>
+            <div>
+              <div class="career-company">Ambito5</div>
+              <div class="career-role">Head of Digital Innovation</div>
+              <div class="career-desc">Leadership del team Innovation, Analysis &amp; Tech. Creazione e ideazione di servizi per la nuova area dedicata a Web &amp; Social development, insights, data visualization e monitoring. Native advertising, social e Big Data analytics.</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-date">2010 →<br>2012</div>
+            <div>
+              <div class="career-company">Ambito5</div>
+              <div class="career-role">Social Media Architect</div>
+              <div class="career-desc">Digital e social strategy, online media campaign planning e optimization, community management, digital PR.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPETENZE -->
+  <div class="about-section reveal">
+    <div class="about-section-grid">
+      <div class="about-section-label">Competenze</div>
+      <div class="about-section-content">
+        <h2>Cosa faccio meglio</h2>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-icon">📣</div><div class="skill-name">Brand Strategy &amp; Communication</div></div>
+          <div class="skill-card"><div class="skill-icon">🎬</div><div class="skill-name">Advertising &amp; Creativity</div></div>
+          <div class="skill-card"><div class="skill-icon">📱</div><div class="skill-name">Digital &amp; Social Media Marketing</div></div>
+          <div class="skill-card"><div class="skill-icon">📈</div><div class="skill-name">Performance Marketing</div></div>
+          <div class="skill-card"><div class="skill-icon">🛒</div><div class="skill-name">eCommerce &amp; Digital Properties</div></div>
+          <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">Big Data &amp; Analytics</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMAZIONE -->
+  <div class="about-section reveal">
+    <div class="about-section-grid">
+      <div class="about-section-label">Formazione</div>
+      <div class="about-section-content">
+        <div class="career-timeline">
+          <div class="career-item">
+            <div class="career-date">2021 →<br>2023</div>
+            <div>
+              <div class="career-company">SDA Bocconi</div>
+              <div class="career-role">Executive MBA</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-date">2008 →<br>2011</div>
+            <div>
+              <div class="career-company">Politecnico di Milano</div>
+              <div class="career-role">Laurea Magistrale — Ingegneria, eBusiness &amp; ICT Management</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-date">2004 →<br>2007</div>
+            <div>
+              <div class="career-company">Politecnico di Milano</div>
+              <div class="career-role">Laurea Triennale — Ingegneria Informatica</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer style="background:#f5f5f7;border-top:1px solid rgba(0,0,0,0.08);padding:48px 24px;text-align:center">
+  <div style="font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:10px">🦁 Cannes Lions 2026</div>
+  <p style="font-size:13px;color:#86868b;max-width:480px;margin:0 auto 16px">
+    Un progetto di <a href="https://www.linkedin.com/in/michelesarzana/" target="_blank" style="color:var(--blue);text-decoration:none;font-weight:500">Michele Sarzana</a> · Realizzato con Claude AI di Anthropic
+  </p>
+  <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+    <a href="https://www.canneslions.com" target="_blank" style="font-size:12px;color:#86868b;text-decoration:none">canneslions.com</a>
+    <a href="https://www.creativereview.co.uk" target="_blank" style="font-size:12px;color:#86868b;text-decoration:none">Creative Review</a>
+    <a href="https://shots.net" target="_blank" style="font-size:12px;color:#86868b;text-decoration:none">shots.net</a>
+    <a href="http://www.michelesarzana.it" target="_blank" style="font-size:12px;color:#86868b;text-decoration:none">michelesarzana.it</a>
+  </div>
+</footer>`;
+
+  window.scrollTo(0,0);
+  initReveal();
+}
+
 // ===================== ROUTER =====================
 function route(){
   const hash=location.hash||'#/';
   const path=hash.replace('#','');
   if(path==='/'||path===''){renderHome();return;}
   if(path==='/lucky'){renderLucky();return;}
+  if(path==='/about'){renderAbout();return;}
   const parts=path.split('/').filter(Boolean);
   if(parts[0]==='category'&&parts[1]){renderCategory(parts[1]);return;}
   if(parts[0]==='case'&&parts[1]){renderCase(parts[1]);return;}
