@@ -142,10 +142,13 @@ nav{position:sticky;top:0;z-index:1000;background:var(--nav);
 .cat-block-link:hover{text-decoration:underline}
 
 /* TWO-COL LAYOUT inside cat-block */
-.cat-block-body{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
+.cat-block-body{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:stretch}
 .cat-block-body.multi-gp{grid-template-columns:1fr 280px}
-.cat-gp-col{min-width:0}
-.cat-gp-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.cat-gp-col{min-width:0;display:flex;flex-direction:column}
+.cat-gp-grid{display:grid;grid-template-columns:1fr;gap:14px;flex:1}
+.cat-gp-grid .win-card{max-height:100%;overflow:hidden}
+.cat-gp-grid:not(.multi) .win-card{height:100%}
+.cat-gp-grid:not(.multi) .win-thumb{max-height:260px}
 .cat-gp-grid.multi{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 .cat-medals-col{background:#fff;border-radius:16px;box-shadow:var(--shadow);
   overflow:hidden;border:1px solid rgba(0,0,0,0.05)}
@@ -171,7 +174,14 @@ nav{position:sticky;top:0;z-index:1000;background:var(--nav);
 .mi-more{font-size:11px;color:var(--blue);padding:6px 16px 12px;cursor:pointer}
 .mi-more:hover{text-decoration:underline}
 
-@media(max-width:900px){.cat-block-body{grid-template-columns:1fr}}
+@media(max-width:900px){
+  .cat-block-body{grid-template-columns:1fr;align-items:start}
+  .cat-gp-col{display:block}
+  .cat-gp-grid{flex:none}
+  .cat-gp-grid:not(.multi) .win-card{height:auto}
+  .cat-gp-grid:not(.multi) .win-thumb{max-height:none}
+  .cat-medals-col{margin-top:0}
+}
 @media(max-width:768px){
   .hero-stats{gap:24px}.stat-num{font-size:28px}
   .cat-gp-grid{grid-template-columns:1fr}
@@ -1337,7 +1347,7 @@ function renderAbout(){
     <div class="about-hero-text">
       <div class="about-hero-eyebrow">Il progetto · L'autore</div>
       <div class="about-hero-name">Michele<br>Sarzana</div>
-      <div class="about-hero-role">Head of Brand Marketing,<br>Communication &amp; eCommerce <strong style="color:rgba(255,255,255,0.8)">@Fastweb</strong></div>
+      <div class="about-hero-role">Brand Marketing, Media &amp; eCommerce Director<br><strong style="color:rgba(255,255,255,0.8)">@Fastweb + Vodafone</strong></div>
       <blockquote class="about-hero-quote">
         "I believe in creativity and branding as a mix of intuition, technology, analysis and risk.
         Measurability, KPIs and traceability are my keywords, imagination and innovation my main work tools.
@@ -1381,7 +1391,7 @@ function renderAbout(){
         <h2>Cannes Lions 2026 — Winners Archive</h2>
         <p>Questo sito nasce da una domanda semplice: <strong>perché i vincitori del festival più importante della creatività pubblicitaria mondiale sono così difficili da esplorare?</strong> I dati ci sono, le campagne anche — ma l'esperienza di navigarle è spesso dispersiva, frammentata tra comunicati stampa, PDF e siti di categoria.</p>
         <p>L'idea è stata raccogliere tutti i Grand Prix, Gold, Silver e Bronze di Cannes Lions 2026 in un'unica esperienza digitale — organizzata per categoria, track e livello di premio — con video, descrizioni, credits e pagine dedicate per ogni case study.</p>
-        <p>Il sito è costruito come <strong>Single Page Application</strong> con routing hash-based, completamente statico su GitHub Pages — zero backend, zero dipendenze esterne, massima velocità. Il design si ispira al sistema visivo di Apple: tipografia system-font, whitespace generoso, card layout, transizioni fluide.</p>
+        <p>Il sito è costruito come <strong>Single Page Application</strong> con routing hash-based, completamente statico su GitHub Pages — zero backend, zero dipendenze esterne, massima velocità. Il design punta su tipografia system-font, whitespace generoso, card layout e transizioni fluide.</p>
 
         <div class="about-stats-bar">
           <div class="about-stat-cell">
@@ -1411,7 +1421,6 @@ function renderAbout(){
           <span class="about-tech-pill">GitHub Pages</span>
           <span class="about-tech-pill">YouTube Embed API</span>
           <span class="about-tech-pill">Vimeo Player API</span>
-          <span class="about-tech-pill">Apple Design System</span>
           <span class="about-tech-pill">Claude AI (Anthropic)</span>
         </div>
       </div>
@@ -1424,9 +1433,9 @@ function renderAbout(){
       <div class="about-section-label">Chi sono</div>
       <div class="about-section-content">
         <h2>Marketing, creatività e un po' di codice</h2>
-        <p>Mi occupo di brand marketing e comunicazione da oltre 15 anni, in bilico costante tra strategia, creatività e tecnologia. Oggi guido il team di <strong>Brand Marketing, Communication &amp; eCommerce di Fastweb</strong> — dalla definizione della brand strategy alla creatività pubblicitaria (TVC, OOH, digital), fino alla gestione del canale eCommerce e delle proprietà digitali.</p>
-        <p>Ho costruito la mia carriera partendo dal digitale e dal social media marketing, quando questi erano ancora "il futuro della comunicazione" — e nel tempo ho visto quel futuro diventare il presente, poi la normalità. Oggi la sfida è di nuovo trovare i bordi, spingere dove non si è ancora andati.</p>
-        <p>Credo che le idee migliori nascano nell'intersezione tra dati e intuizione, tra rigore analitico e coraggio creativo. <em>Great ideas need to be scary.</em></p>
+        <p>Brand &amp; Marketing Director con oltre 10 anni di esperienza nel trasformare strategie di brand in risultati misurabili. Oggi guido il team di <strong>Brand Marketing, Media &amp; eCommerce di Fastweb + Vodafone</strong> — uno dei casi di dual-branding più complessi nel mercato europeo delle telecomunicazioni: integrare due brand leader in un'unica narrativa coerente.</p>
+        <p>Ho costruito la mia carriera partendo dal digitale — social, programmatic, performance marketing — quando questi erano ancora "il futuro della comunicazione". Nel tempo ho scalato verso la brand strategy a 360°: dalla creatività pubblicitaria (TVC, OOH) alla media strategy, dall'eCommerce al MarTech, fino all'UX/UI e al design system.</p>
+        <p>Credo che il marketing efficace nasca dall'equilibrio tra intuizione creativa e rigore analitico. <em>"Great ideas need to be scary."</em> Non ho paura di sfidare lo status quo quando dati e istinto indicano una direzione diversa.</p>
       </div>
     </div>
   </div>
@@ -1438,19 +1447,27 @@ function renderAbout(){
       <div class="about-section-content">
         <div class="career-timeline">
           <div class="career-item">
-            <div class="career-date">2022 →<br>Oggi</div>
+            <div class="career-date">2025 →<br>Oggi</div>
+            <div>
+              <div class="career-company">Fastweb + Vodafone</div>
+              <div class="career-role">Brand Marketing, Media &amp; eCommerce Director</div>
+              <div class="career-desc">Guido la strategia integrata di brand, comunicazione, media, eCommerce e design per Fastweb+Vodafone — un caso unico di dual-branding nel mercato europeo delle TLC. Brand positioning e narrativa, campagne ATL e digital (TVC, OOH, social, performance), media strategy end-to-end, eCommerce e digital sales, UX/UI e design system, MarTech &amp; AdTech stack, Customer Insights &amp; NPS. Team cross-funzionale di ~30 persone.</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-date">2022 →<br>2025</div>
             <div>
               <div class="career-company">Fastweb</div>
               <div class="career-role">Head of Brand Marketing, Communication &amp; eCommerce</div>
-              <div class="career-desc">Brand &amp; Communication strategy, brand concept, reputation, advertising creativity e campagne da TVC a social. Responsabile eCommerce team, digital sales, upselling &amp; cross-selling e digital properties. Media Strategy su tutto il funnel: branding, awareness, consideration, sales.</div>
+              <div class="career-desc">Brand &amp; Communication strategy dal concept all'esecuzione (TVC, OOH, digital, social, eventi, PR). Responsabile eCommerce: digital sales, upselling &amp; cross-selling, digital properties. Media Strategy su tutto il funnel: branding, awareness, consideration, sales. Customer experience innovation, incluso ChatBOT Marvin.</div>
             </div>
           </div>
           <div class="career-item">
             <div class="career-date">2018 →<br>2022</div>
             <div>
               <div class="career-company">Fastweb</div>
-              <div class="career-role">Manager of Advertising &amp; Digital Hub</div>
-              <div class="career-desc">Advertising e ATL strategy dal concept all'implementazione: TVC, OOH, digital OOH, eventi, digital &amp; social creativity. Digital Marketing: programmatic, social, search e performance marketing. Data analytics (Google Analytics, DMP, listening tools).</div>
+              <div class="career-role">Manager of Advertising &amp; Digital Media</div>
+              <div class="career-desc">Trasformazione del marketing da approcci tradizionali a strategie programmatic e data-driven. Advertising ATL (TVC, OOH), digital marketing (programmatic, social, search, performance), budget management con focus su ROI e CPA. Data analytics con Google Analytics, Data Studio, DMP.</div>
             </div>
           </div>
           <div class="career-item">
@@ -1458,7 +1475,7 @@ function renderAbout(){
             <div>
               <div class="career-company">Fastweb</div>
               <div class="career-role">Manager of Digital Marketing</div>
-              <div class="career-desc">Digital Marketing strategy omnicanale, sinergie tra social, search e performance marketing. Sviluppo di canali di contatto digitali con i clienti, incluse soluzioni innovative come il ChatBOT Marvin su Facebook.</div>
+              <div class="career-desc">Digital Marketing strategy omnicanale, customer journey e conversion optimization. Sinergie tra social, search e performance marketing. ChatBOT Marvin su Facebook — soluzione innovativa di customer service.</div>
             </div>
           </div>
           <div class="career-item">
@@ -1466,7 +1483,7 @@ function renderAbout(){
             <div>
               <div class="career-company">Fastweb</div>
               <div class="career-role">Manager of Social Marketing</div>
-              <div class="career-desc">Social strategy e implementazione, editorial plan, social advertising. Social &amp; web monitoring per analisi delle conversazioni dei clienti. Customer experience integrata tra social e company journey.</div>
+              <div class="career-desc">Trasformazione social di Fastweb: editorial calendar, social advertising, chatbot automation. Progetti speciali tra cui Sky&amp;Fastweb "Sky Experience" #quisivola — Social Media Award winner. Miglioramento del Net Promoter Score tramite innovazione nel customer service digitale.</div>
             </div>
           </div>
           <div class="career-item">
@@ -1474,7 +1491,7 @@ function renderAbout(){
             <div>
               <div class="career-company">Ambito5</div>
               <div class="career-role">Head of Digital Innovation</div>
-              <div class="career-desc">Leadership del team Innovation, Analysis &amp; Tech. Creazione e ideazione di servizi per la nuova area dedicata a Web &amp; Social development, insights, data visualization e monitoring. Native advertising, social e Big Data analytics.</div>
+              <div class="career-desc">Leadership del team Innovation, Analysis &amp; Tech. Nuovi servizi in web development, data analytics e social media. Native advertising e Big Data projects, trasformando raw insights in strategie di business azionabili per i clienti.</div>
             </div>
           </div>
           <div class="career-item">
@@ -1482,7 +1499,7 @@ function renderAbout(){
             <div>
               <div class="career-company">Ambito5</div>
               <div class="career-role">Social Media Architect</div>
-              <div class="career-desc">Digital e social strategy, online media campaign planning e optimization, community management, digital PR.</div>
+              <div class="career-desc">Digital e social media campaign planning e optimization, collaborazione con i team di design, digital PR strategy. Specializzazione in campaign reporting, editorial strategy optimization e client success through hands-on digital execution.</div>
             </div>
           </div>
         </div>
@@ -1498,11 +1515,13 @@ function renderAbout(){
         <h2>Cosa faccio meglio</h2>
         <div class="skills-grid">
           <div class="skill-card"><div class="skill-icon">📣</div><div class="skill-name">Brand Strategy &amp; Communication</div></div>
-          <div class="skill-card"><div class="skill-icon">🎬</div><div class="skill-name">Advertising &amp; Creativity</div></div>
-          <div class="skill-card"><div class="skill-icon">📱</div><div class="skill-name">Digital &amp; Social Media Marketing</div></div>
-          <div class="skill-card"><div class="skill-icon">📈</div><div class="skill-name">Performance Marketing</div></div>
-          <div class="skill-card"><div class="skill-icon">🛒</div><div class="skill-name">eCommerce &amp; Digital Properties</div></div>
-          <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">Big Data &amp; Analytics</div></div>
+          <div class="skill-card"><div class="skill-icon">🎬</div><div class="skill-name">Advertising &amp; Creatività (TVC, OOH, Digital)</div></div>
+          <div class="skill-card"><div class="skill-icon">📡</div><div class="skill-name">Media Strategy &amp; Investment Optimization</div></div>
+          <div class="skill-card"><div class="skill-icon">🛒</div><div class="skill-name">eCommerce &amp; Digital Sales</div></div>
+          <div class="skill-card"><div class="skill-icon">🖥️</div><div class="skill-name">UX/UI &amp; Design System</div></div>
+          <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-name">MarTech &amp; AdTech (CDP, CRM, Programmatic)</div></div>
+          <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">Customer Insights &amp; Brand Tracking</div></div>
+          <div class="skill-card"><div class="skill-icon">👥</div><div class="skill-name">Team Leadership &amp; Cross-Functional Management</div></div>
         </div>
       </div>
     </div>
