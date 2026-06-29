@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cannes Lions 2026 - Grand Prix Winners</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .winners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .winner-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .winner-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        .winner-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        .winner-content {
+            padding: 1.5rem;
+        }
+        .winner-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .winner-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        .winner-brand {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .winner-agency {
+            font-size: 0.875rem;
+            color: #999;
+        }
+        .page-header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+        .page-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏆 Cannes Lions 2026</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="categories.html">Categorie</a>
+                <a href="grand-prix.html">Grand Prix</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Vincitori Grand Prix</h1>
+        <p>I premi più prestigiosi del Festival della Creatività di Cannes 2026</p>
+    </header>
+
+    <main class="container section">
+        <div class="winners-grid">
+            <a href="case-coqui.html" class="winner-card">
+                <div class="winner-image">🎵</div>
+                <div class="winner-content">
+                    <div class="winner-category">Audio & Radio</div>
+                    <h2 class="winner-title">Coquì Alarmed</h2>
+                    <p class="winner-brand">Hyundai Puerto Rico</p>
+                    <p class="winner-agency">BBDO Puerto Rico</p>
+                </div>
+            </a>
+
+            <a href="case-ab-inbev.html" class="winner-card">
+                <div class="winner-image" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">🏆</div>
+                <div class="winner-content">
+                    <div class="winner-category">Creative Brand (Inaugurale)</div>
+                    <h2 class="winner-title">Creativity at Scale</h2>
+                    <p class="winner-brand">AB InBev</p>
+                    <p class="winner-agency">Anheuser-Busch InBev (In-house)</p>
+                </div>
+            </a>
+
+            <a href="case-ordinary.html" class="winner-card">
+                <div class="winner-image" style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);">🧪</div>
+                <div class="winner-content">
+                    <div class="winner-category">Health & Wellness</div>
+                    <h2 class="winner-title">The Periodic Fable</h2>
+                    <p class="winner-brand">The Ordinary</p>
+                    <p class="winner-agency">Uncommon Creative Studio / Smuggler</p>
+                </div>
+            </a>
+
+            <a href="case-novartis.html" class="winner-card">
+                <div class="winner-image" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">💊</div>
+                <div class="winner-content">
+                    <div class="winner-category">Pharma</div>
+                    <h2 class="winner-title">Relax Your Tight End</h2>
+                    <p class="winner-brand">Novartis</p>
+                    <p class="winner-agency">Fallon, Minneapolis</p>
+                </div>
+            </a>
+
+            <a href="case-caritas.html" class="winner-card">
+                <div class="winner-image" style="background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);">🕊️</div>
+                <div class="winner-content">
+                    <div class="winner-category">Lions Health & UN</div>
+                    <h2 class="winner-title">Vehicle of Hope</h2>
+                    <p class="winner-brand">Caritas Jerusalem / Caritas Sweden</p>
+                    <p class="winner-agency">Differ Stockholm</p>
+                </div>
+            </a>
+
+            <a href="case-barcode.html" class="winner-card">
+                <div class="winner-image" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">⚽</div>
+                <div class="winner-content">
+                    <div class="winner-category">Outdoor</div>
+                    <h2 class="winner-title">Field Barcode</h2>
+                    <p class="winner-brand">Mercado Livre</p>
+                    <p class="winner-agency">GUT São Paulo</p>
+                </div>
+            </a>
+
+            <a href="case-ikea.html" class="winner-card">
+                <div class="winner-image" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">🍟</div>
+                <div class="winner-content">
+                    <div class="winner-category">Print & Publishing</div>
+                    <h2 class="winner-title">Look Familiar?</h2>
+                    <p class="winner-brand">Heinz Ketchup</p>
+                    <p class="winner-agency">Rethink, Toronto</p>
+                </div>
+            </a>
+
+            <a href="case-faroe.html" class="winner-card">
+                <div class="winner-image" style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);">🚀</div>
+                <div class="winner-content">
+                    <div class="winner-category">Creative B2B</div>
+                    <h2 class="winner-title">The Faroe Islands Space Program</h2>
+                    <p class="winner-brand">SKF</p>
+                    <p class="winner-agency">NORD Stockholm</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>Cannes Lions 2026 - Archivio non ufficiale dei vincitori Grand Prix</p>
+            <p>Realizzato a scopo educativo e di documentazione creativa</p>
+        </div>
+    </footer>
+</body>
+</html>
