@@ -1,28 +1,1171 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cannes Lions 2026 - Vincitori</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cannes Lions 2026 — Grand Prix Winners</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #1d1d1f;
+      --white:   #f5f5f7;
+      --off-white: #fbfbfd;
+      --mid:     #86868b;
+      --blue:    #0071e3;
+      --blue-hover: #0077ed;
+      --nav-bg:  rgba(255,255,255,0.82);
+      --radius:  18px;
+      --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --transition: 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-logo .lion-icon { font-size: 20px; }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.72;
+      transition: opacity var(--transition);
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    /* ── Hero ── */
+    .hero {
+      background: #000;
+      color: #fff;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, #1a1a2e 0%, #000 100%);
+    }
+    .hero-badge {
+      position: relative;
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
+    }
+    .hero h1 {
+      position: relative;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      position: relative;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 400;
+      color: rgba(255,255,255,0.56);
+      letter-spacing: -0.5px;
+      margin-bottom: 48px;
+      max-width: 640px;
+    }
+    .hero-stats {
+      position: relative;
+      display: flex;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: #fff;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+    .hero-cta {
+      position: relative;
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 980px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .hero-cta:hover {
+      background: var(--blue-hover);
+      transform: scale(1.02);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.4;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll span { font-size: 11px; color: #fff; letter-spacing: 1px; text-transform: uppercase; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── Category Filter ── */
+    .filter-bar {
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 48px;
+      z-index: 900;
+    }
+    .filter-scroll {
+      display: flex;
+      gap: 4px;
+      padding: 10px 0;
+      overflow-x: auto;
+      max-width: 1200px;
+      width: 100%;
+      scrollbar-width: none;
+    }
+    .filter-scroll::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 980px;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--black);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      white-space: nowrap;
+      opacity: 0.7;
+    }
+    .filter-btn:hover { background: rgba(0,0,0,0.06); opacity: 1; }
+    .filter-btn.active {
+      background: var(--black);
+      color: #fff;
+      opacity: 1;
+    }
+
+    /* ── Section ── */
+    .section {
+      padding: 80px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      margin-bottom: 40px;
+    }
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.05;
+    }
+    .section-desc {
+      font-size: 17px;
+      color: var(--mid);
+      margin-top: 12px;
+      line-height: 1.5;
+      max-width: 560px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: rgba(0,0,0,0.08);
+      margin: 0 24px;
+    }
+
+    /* ── Category Block ── */
+    .category-block {
+      padding: 64px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .category-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
+      border-radius: 980px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 20px;
+    }
+    .category-label .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+    .category-block h2 {
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin-bottom: 40px;
+      line-height: 1.1;
+    }
+
+    /* ── Winner Cards ── */
+    .winners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .winner-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .winner-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.14);
+    }
+
+    /* Video embed */
+    .card-video {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+    }
+    .card-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .card-video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      cursor: pointer;
+    }
+    .play-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .play-btn:hover { transform: scale(1.1); background: rgba(255,255,255,0.25); }
+    .play-btn svg { fill: #fff; width: 24px; height: 24px; margin-left: 4px; }
+
+    .card-body {
+      padding: 24px;
+    }
+    .card-meta {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .card-agency {
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .card-desc {
+      font-size: 14px;
+      color: #515154;
+      line-height: 1.6;
+    }
+    .card-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 16px;
+      background: linear-gradient(135deg, #ffd700, #ffb300);
+      color: #000;
+      border-radius: 980px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── Full-width featured card ── */
+    .winner-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .winner-card.featured .card-video {
+      padding-bottom: 0;
+      min-height: 360px;
+    }
+    .winner-card.featured .card-body {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .winner-card.featured .card-title { font-size: 28px; margin-bottom: 12px; }
+    .winner-card.featured .card-desc { font-size: 15px; }
+
+    /* ── Double video (Film has 2 spots) ── */
+    .double-video {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .double-video .card-video { padding-bottom: 70%; }
+
+    /* ── Footer ── */
+    footer {
+      background: #f5f5f7;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      color: var(--black);
+    }
+    .footer-note {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--blue); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero-stats { gap: 24px; }
+      .stat-num { font-size: 28px; }
+      .winner-card.featured { grid-template-columns: 1fr; }
+      .winner-card.featured .card-video { min-height: 200px; padding-bottom: 56.25%; }
+      .double-video { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .winners-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Category group background alternation ── */
+    .bg-light { background: var(--off-white); }
+    .bg-white { background: #fff; }
+    .bg-dark { background: #1d1d1f; color: #f5f5f7; }
+    .bg-dark .category-label { background: rgba(255,255,255,0.1); color: #f5f5f7; }
+    .bg-dark h2 { color: #f5f5f7; }
+    .bg-dark .winner-card { background: #2c2c2e; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+    .bg-dark .card-title { color: #f5f5f7; }
+    .bg-dark .card-desc { color: #aeaeb2; }
+    .bg-dark .card-agency { color: #8e8e93; }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Category hidden state ── */
+    .category-section { transition: opacity 0.3s ease; }
+    .category-section.hidden { display: none; }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="global-nav">
-        <div class="nav-content">
-            <a href="index.html" class="nav-logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.88-2.38 5.98.75 7.13-.57 1.5-1.31 2.99-2.8 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-                </svg>
-                Cannes Lions 2026
-            </a>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="grand-prix.html">Grand Prix</a></li>
-                <li><a href="all-winners.html">Vincitori</a></li>
-            </ul>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="lion-icon">🦁</span>
+      Cannes Lions 2026
+    </a>
+    <ul class="nav-links">
+      <li><a href="#craft">Craft</a></li>
+      <li><a href="#film">Film</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#strategy">Strategy</a></li>
+      <li><a href="#purpose">Purpose</a></li>
+      <li><a href="#special">Special</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <span class="hero-badge">🎉 Festival di Creatività · Giugno 2026</span>
+  <h1>Cannes Lions<br>2026</h1>
+  <p class="hero-sub">I Grand Prix che hanno definito la creatività pubblicitaria globale</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">32</div>
+      <div class="stat-label">Grand Prix</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Categorie</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Paesi</div>
+    </div>
+  </div>
+  <a href="#categories" class="hero-cta">Scopri i vincitori</a>
+  <div class="hero-scroll">
+    <span>Scorri</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><path d="M8 12L2 6l1.4-1.4L8 9.2l4.6-4.6L14 6z"/></svg>
+  </div>
+</section>
+
+<!-- ── Filter Bar ── -->
+<div class="filter-bar" id="categories">
+  <div class="filter-scroll">
+    <button class="filter-btn active" data-filter="all">Tutti</button>
+    <button class="filter-btn" data-filter="craft">Craft</button>
+    <button class="filter-btn" data-filter="film">Film & Entertainment</button>
+    <button class="filter-btn" data-filter="experience">Experience</button>
+    <button class="filter-btn" data-filter="strategy">Strategy & Data</button>
+    <button class="filter-btn" data-filter="purpose">Purpose & Good</button>
+    <button class="filter-btn" data-filter="special">Special Lions</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     CRAFT
+══════════════════════════════════════════════ -->
+<div class="bg-white category-section" data-category="craft" id="craft">
+  <div class="category-block reveal">
+    <div class="category-label"><span class="dot"></span>Craft</div>
+    <h2>L'arte del fare bene.</h2>
+    <div class="winners-grid">
+
+      <!-- Film Craft -->
+      <div class="winner-card featured">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/spmjIn5NaV0?rel=0" title="Coinbase: Your Way Out" loading="lazy" allowfullscreen></iframe>
         </div>
-    </nav>
+        <div class="card-body">
+          <div class="card-meta">Film Craft Grand Prix</div>
+          <div class="card-title">Your Way Out</div>
+          <div class="card-agency">Coinbase · Isle of Any, New York</div>
+          <div class="card-desc">Un annuncio che simula un mondo di gioco e mostra un uomo che fugge dalla sua vita uniforme. Anziché usare la CGI, lo spot è stato girato interamente in camera — un trionfo di artigianalità cinematografica.</div>
+          <span class="card-award">🥇 Grand Prix · Film Craft</span>
+        </div>
+      </div>
+
+      <!-- Digital Craft -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/D448m_QWf74?rel=0" title="Google: Project Genie" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Digital Craft Grand Prix</div>
+          <div class="card-title">Project Genie</div>
+          <div class="card-agency">Google · Google DeepMind</div>
+          <div class="card-desc">Prototipo di ricerca AI di Google DeepMind che consente agli utenti di generare mondi virtuali 3D tramite prompt testuali o immagini. La frontiera tra creatività umana e intelligenza artificiale.</div>
+          <span class="card-award">🥇 Grand Prix · Digital Craft</span>
+        </div>
+      </div>
+
+      <!-- Industry Craft -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/yq6xwmjGiA8?rel=0" title="De'Longhi: Tiny Coffee Shops" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Industry Craft Grand Prix</div>
+          <div class="card-title">Tiny Coffee Shops</div>
+          <div class="card-agency">De'Longhi · Lola Madrid</div>
+          <div class="card-desc">Lanciata durante la Milan Design Week, una serie di miniature di caffetterie scultoree realizzate dal modelmaker Simon Weisse — noto per le sue collaborazioni con il regista Wes Anderson.</div>
+          <span class="card-award">🥇 Grand Prix · Industry Craft</span>
+        </div>
+      </div>
+
+      <!-- Design -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/MWfJcl8deLE?rel=0" title="Apple TV Rebrand" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Design Grand Prix</div>
+          <div class="card-title">Apple TV Rebrand</div>
+          <div class="card-agency">Apple TV · TBWA\Media Arts Lab</div>
+          <div class="card-desc">Girato in camera usando lastre di vetro fisiche, il nuovo branding di Apple TV è un'ode alla manifattura artigianale. Nessuna grafica digitale: pura luce, rifrazione e materiali reali.</div>
+          <span class="card-award">🥇 Grand Prix · Design</span>
+        </div>
+      </div>
+
+      <!-- Print & Publishing -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/7vuZx0ue7z0?rel=0" title="Heinz: Look Familiar?" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Print & Publishing Grand Prix</div>
+          <div class="card-title">Look Familiar?</div>
+          <div class="card-agency">Heinz · Rethink</div>
+          <div class="card-desc">Una campagna globale che evidenzia come le confezioni di patatine fritte di tutto il mondo rispecchino il logo "Keystone" di Heinz — un sottile suggerimento che il perfetto accompagnamento è Heinz Ketchup.</div>
+          <span class="card-award">🥇 Grand Prix · Print & Publishing</span>
+        </div>
+      </div>
+
+      <!-- Audio & Radio -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/IKAqqBf2N1Y?rel=0" title="Hyundai: Coquí Alarmed" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Audio & Radio Grand Prix</div>
+          <div class="card-title">Coquí Alarmed</div>
+          <div class="card-agency">Hyundai Puerto Rico · BBDO Puerto Rico</div>
+          <div class="card-desc">Per difendere il suono distintivo della rana portoricana Coquí — che alcuni volevano silenziare su Reddit — Hyundai ha sostituito il bip di sblocco delle sue auto a noleggio con il canto della rana.</div>
+          <span class="card-award">🥇 Grand Prix · Audio & Radio</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════
+     FILM & ENTERTAINMENT
+══════════════════════════════════════════════ -->
+<div class="bg-dark category-section" data-category="film" id="film">
+  <div class="category-block reveal">
+    <div class="category-label"><span class="dot"></span>Film & Entertainment</div>
+    <h2>Storie che rimangono.</h2>
+    <div class="winners-grid">
+
+      <!-- Film Grand Prix — 2 spots -->
+      <div class="winner-card featured" style="grid-template-columns:1fr; background:#111;">
+        <div class="card-meta" style="color:#0a84ff; padding:24px 24px 0; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase;">Film Grand Prix</div>
+        <div class="card-title" style="color:#fff; padding:8px 24px 0; font-size:26px; font-weight:700;">Claude — Can I Get a Six Pack Quickly? & How Can I Communicate Better With My Mom?</div>
+        <div class="card-agency" style="color:#8e8e93; padding:6px 24px 16px; font-size:13px;">Anthropic · Mother London · Dir. Jeff Low, Biscuit Filmworks</div>
+        <div class="double-video">
+          <div class="card-video">
+            <iframe src="https://player.vimeo.com/video/1163236978?dnt=1" title="Claude: Can I Get a Six Pack Quickly?" loading="lazy" allowfullscreen></iframe>
+          </div>
+          <div class="card-video">
+            <iframe src="https://player.vimeo.com/video/1162586590?dnt=1" title="Claude: How Can I Communicate Better With My Mom?" loading="lazy" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="card-body" style="background:#111;">
+          <div class="card-desc" style="color:#aeaeb2;">Due spot Super Bowl dalla commedia oscura che posizionano Claude come l'AI che si impegna a non inserire messaggi commerciali nei propri strumenti. Mother London illustra come l'AI possa aiutare con le domande quotidiane — dal six pack alla comunicazione familiare.</div>
+          <span class="card-award">🥇 Grand Prix · Film</span>
+        </div>
+      </div>
+
+      <!-- Entertainment -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/nb8nGf5EQvg?rel=0" title="Adidas: Original Forever" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Entertainment Grand Prix</div>
+          <div class="card-title">Original Forever</div>
+          <div class="card-agency">Adidas Originals · Johannes Leonardo</div>
+          <div class="card-desc">Per celebrare il tour reunion degli Oasis nel 2025, Adidas Originals ha lanciato la collezione adidas Original X Oasis Live 25 con un film di tre minuti su una nuova orchestrazione di "Live Forever".</div>
+          <span class="card-award">🥇 Grand Prix · Entertainment</span>
+        </div>
+      </div>
+
+      <!-- Entertainment for Music — also wins here -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/htQBS2Ikz6c?rel=0" title="Rosalía ft Björk: Berghain" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Entertainment for Music — 2° Grand Prix</div>
+          <div class="card-title">Berghain</div>
+          <div class="card-agency">Rosalía ft. Björk & Yves Tumor · Director: Canada</div>
+          <div class="card-desc">Un videoclip mozzafiato per la collaborazione tra Rosalía, Björk e Yves Tumor. La regia di Canada trasforma il leggendario club berlinese in un universo visivo ipnotico, capace di conquistare la giuria con la sua audacia estetica.</div>
+          <span class="card-award">🥇 Grand Prix · Entertainment for Music</span>
+        </div>
+      </div>
+
+      <!-- Entertainment for Gaming -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/izSoHjBvAwA?rel=0" title="Clash Royale: Copycats Welcome" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Entertainment for Gaming Grand Prix</div>
+          <div class="card-title">Copycats Welcome</div>
+          <div class="card-agency">Clash Royale · David</div>
+          <div class="card-desc">Anziché combattere i cloni del proprio gioco, Clash Royale ha invitato i giocatori delle versioni copiate all'interno del gioco originale, permettendo loro di scambiare i progressi fatti nelle versioni pirata con premi reali.</div>
+          <span class="card-award">🥇 Grand Prix · Entertainment for Gaming</span>
+        </div>
+      </div>
+
+      <!-- Entertainment for Sport -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/tq775MZGE48?rel=0" title="Club Deportivo Municipal: The Thousand Sponsors" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Entertainment for Sport Grand Prix</div>
+          <div class="card-title">The Thousand Sponsors of Muni</div>
+          <div class="card-agency">Club Deportivo Municipal · McCann Lima</div>
+          <div class="card-desc">Il club calcistico peruviano ha creato una maglia con spazio per 1.000 sponsor, permettendo a tifosi e piccole imprese di sostenere la squadra. La matematica dietro al pricing e la griglia sulla maglia sono stati elogiati per la loro eccellenza artigianale.</div>
+          <span class="card-award">🥇 Grand Prix · Entertainment for Sport</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════
+     EXPERIENCE & ACTIVATION
+══════════════════════════════════════════════ -->
+<div class="bg-white category-section" data-category="experience" id="experience">
+  <div class="category-block reveal">
+    <div class="category-label"><span class="dot"></span>Experience & Activation</div>
+    <h2>Campagne che si vivono.</h2>
+    <div class="winners-grid">
+
+      <!-- Outdoor -->
+      <div class="winner-card featured">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/obvMyNramRQ?rel=0" title="Mercado Livre: Field Barcode" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Outdoor Grand Prix</div>
+          <div class="card-title">Field Barcode</div>
+          <div class="card-agency">Mercado Livre · GUT, São Paulo</div>
+          <div class="card-desc">Mercado Livre ha inserito pattern sui campi da calcio brasiliani che potevano essere fotografati e scansionati per ottenere sconti. Un'idea semplice e geniale che trasforma ogni partita in un momento di commerce.</div>
+          <span class="card-award">🥇 Grand Prix · Outdoor</span>
+        </div>
+      </div>
+
+      <!-- Brand Experience -->
+      <div class="winner-card featured">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/N0WxAUkBuQA?rel=0" title="Columbia Sportswear: Expedition Impossible" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Brand Experience & Activation Grand Prix</div>
+          <div class="card-title">Expedition Impossible</div>
+          <div class="card-agency">Columbia Sportswear · adam&eveDDB\TBWA</div>
+          <div class="card-desc">Columbia Sportswear ha lanciato una sfida ironica, invitando i "terrapiattisti" a trovare il bordo della Terra. Se ci fossero riusciti, il CEO Tim Boyle avrebbe ceduto loro l'azienda. Una provocazione brillante che ha generato attenzione globale.</div>
+          <span class="card-award">🥇 Grand Prix · Brand Experience</span>
+        </div>
+      </div>
+
+      <!-- PR -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/1FNVd5GRkM4?rel=0" title="KitKat: The KitKat Heist" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">PR Grand Prix</div>
+          <div class="card-title">The KitKat Heist</div>
+          <div class="card-agency">KitKat · Burson</div>
+          <div class="card-desc">Quando 12 tonnellate di KitKat vennero rubate in Europa prima di Pasqua, il brand creò il "Stolen KitKat Tracker" e invitò il mondo a diventare "detective del cioccolato" per risolvere il mistero.</div>
+          <span class="card-award">🥇 Grand Prix · PR</span>
+        </div>
+      </div>
+
+      <!-- Social & Creator -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/ZEjMBG0Ifzs?rel=0" title="Heineken: Could Have Been A Heineken" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Social & Creator Grand Prix</div>
+          <div class="card-title">Could Have Been A Heineken</div>
+          <div class="card-agency">Heineken · LePub</div>
+          <div class="card-desc">La campagna evidenzia come il tempo speso a lasciare lunghi messaggi vocali sul telefono potrebbe essere trascorso meglio di persona. Un argomento magistralmente costruito a favore della connessione umana reale.</div>
+          <span class="card-award">🥇 Grand Prix · Social & Creator</span>
+        </div>
+      </div>
+
+      <!-- Media -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/Edurh8SZm-E?rel=0" title="Uber Eats: Build Your Own Super Bowl Commercial" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Media Grand Prix</div>
+          <div class="card-title">Build Your Own Super Bowl Commercial</div>
+          <div class="card-agency">Uber Eats · Special</div>
+          <div class="card-desc">Uber Eats ha creato un'esperienza interattiva nella propria app che permetteva al pubblico di creare la propria versione dello spot Super Bowl selezionando clip diverse e sblocando ore di contenuti extra.</div>
+          <span class="card-award">🥇 Grand Prix · Media</span>
+        </div>
+      </div>
+
+      <!-- Direct -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/YFQaZ6Gm0us?rel=0" title="Uva App: Uva Uva Bombón" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Direct Grand Prix</div>
+          <div class="card-title">Uva Uva Bombón</div>
+          <div class="card-agency">Uva App · De La Cruz Ogilvy</div>
+          <div class="card-desc">In concomitanza con l'halftime show Super Bowl di Bad Bunny, l'app portoricana Uva si è impegnata a offrire offerte da $1 ogni volta che il cantante eseguiva "Tití Me Preguntó" — la canzone con il testo "Uva Uva Bombón".</div>
+          <span class="card-award">🥇 Grand Prix · Direct</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════
+     STRATEGY & DATA
+══════════════════════════════════════════════ -->
+<div class="bg-light category-section" data-category="strategy" id="strategy">
+  <div class="category-block reveal">
+    <div class="category-label"><span class="dot"></span>Strategy & Data</div>
+    <h2>Creatività guidata dai dati.</h2>
+    <div class="winners-grid">
+
+      <!-- Creative Effectiveness -->
+      <div class="winner-card featured">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/pY-03zuV7mE?rel=0" title="AXA France: Three Words" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Creative Effectiveness Grand Prix</div>
+          <div class="card-title">Three Words</div>
+          <div class="card-agency">AXA France · Publicis Conseil</div>
+          <div class="card-desc">Una campagna che ha modificato permanentemente le polizze assicurative di AXA aggiungendo le parole "e violenza domestica" alle situazioni coperte, consentendo a chi subisce abusi di ricevere supporto per la ricollocazione d'emergenza. Ha vinto due Grand Prix nel 2025 e ora aggiunge il Creative Effectiveness.</div>
+          <span class="card-award">🥇 Grand Prix · Creative Effectiveness</span>
+        </div>
+      </div>
+
+      <!-- Creative Strategy -->
+      <div class="winner-card featured">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/fbfxwHTi2S4?rel=0" title="Heineken: The Pub That Refused To Die" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Creative Strategy Grand Prix</div>
+          <div class="card-title">The Pub That Refused To Die</div>
+          <div class="card-agency">Heineken · LePub · Dir. Gar O'Rourke</div>
+          <div class="card-desc">Un documentario che segue la storia degli Aherns, l'ultimo pub rimasto nel villaggio di Kilteely, sull'orlo della chiusura ma salvato da 26 residenti che si sono uniti per acquistarlo e riaprirlo. Una storia vera di comunità e resilienza.</div>
+          <span class="card-award">🥇 Grand Prix · Creative Strategy</span>
+        </div>
+      </div>
+
+      <!-- Creative Data -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/GVdCoJEhO6M?rel=0" title="BCP: SOS POS" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Creative Data Grand Prix</div>
+          <div class="card-title">SOS POS</div>
+          <div class="card-agency">BCP (Banco de Crédito del Perú) · Circus Grey</div>
+          <div class="card-desc">La banca peruviana BCP ha creato SOS POS, permettendo a chi aveva subito il furto dello smartphone di bloccare l'accesso ai propri conti verificando la propria identità tramite i terminali di pagamento nelle piccole imprese del paese.</div>
+          <span class="card-award">🥇 Grand Prix · Creative Data</span>
+        </div>
+      </div>
+
+      <!-- Creative B2B -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/4T-yf1v1rfI?rel=0" title="SKF: Faroe Islands Space Program" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Creative B2B Grand Prix</div>
+          <div class="card-title">The Faroe Islands Space Program</div>
+          <div class="card-agency">SKF · Nord Stockholm</div>
+          <div class="card-desc">Mentre i leader mondiali sono ossessionati dall'esplorazione spaziale, questa campagna per SKF ha evidenziato come possiamo sfruttare l'energia della Luna senza lasciare la Terra — tramite Luna, un aquilone subacqueo che raccoglie energia dalle correnti di marea.</div>
+          <span class="card-award">🥇 Grand Prix · Creative B2B</span>
+        </div>
+      </div>
+
+      <!-- Creative Commerce -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/EZNQm5UxyMQ?rel=0" title="Wisła Kraków: Lucky Fan Index" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Creative Commerce Grand Prix</div>
+          <div class="card-title">Lucky Fan Index</div>
+          <div class="card-agency">Wisła Kraków Football Club · VML Poland</div>
+          <div class="card-desc">Per spingere i tifosi di Wisła Kraków a sostenere il club dopo la retrocessione, VML Poland ha creato il Lucky Fan Index, che usa l'AI per tracciare quanta fortuna porta ogni tifoso alla squadra quando assiste alle partite.</div>
+          <span class="card-award">🥇 Grand Prix · Creative Commerce</span>
+        </div>
+      </div>
+
+      <!-- Creative Business Transformation -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/6pgY3jp7HiM?rel=0" title="Wikifarmer: The Wedding Rice" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Creative Business Transformation Grand Prix</div>
+          <div class="card-title">The Wedding Rice</div>
+          <div class="card-agency">Wikifarmer · McCann Athens</div>
+          <div class="card-desc">Il riso viene tradizionalmente lanciato sugli sposi nei matrimoni greci come simbolo di prosperità, ma questo crea sprechi. Wikifarmer ha offerto un'alternativa sostenibile: riso considerato non commestibile secondo le rigide normative UE, sostenendo gli agricoltori mentre la tradizione continua.</div>
+          <span class="card-award">🥇 Grand Prix · Business Transformation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════
+     PURPOSE & GOOD
+══════════════════════════════════════════════ -->
+<div class="bg-dark category-section" data-category="purpose" id="purpose">
+  <div class="category-block reveal">
+    <div class="category-label"><span class="dot"></span>Purpose & Good</div>
+    <h2>Creatività che cambia il mondo.</h2>
+    <div class="winners-grid">
+
+      <!-- Glass Lion for Change -->
+      <div class="winner-card featured">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/RCK4iiCB2P0?rel=0" title="Nigrum Corpus" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Glass Lion for Change Grand Prix</div>
+          <div class="card-title">Nigrum Corpus</div>
+          <div class="card-agency">Idomed & Instituto Yduqs · Artplan, São Paulo</div>
+          <div class="card-desc">Una campagna che affronta il razzismo nel sistema sanitario brasiliano attraverso un cortometraggio che ne evidenzia il problema e un libro educativo distribuito nelle scuole di medicina di tutto il paese.</div>
+          <span class="card-award">🥇 Grand Prix · Glass: The Lion for Change</span>
+        </div>
+      </div>
+
+      <!-- Grand Prix for Good -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/k2U1G8xCYus?rel=0" title="Comando Con Venezuela" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Grand Prix for Good</div>
+          <div class="card-title">Book Network</div>
+          <div class="card-agency">Comando Con Venezuela · Rainbow Lobster, Mexico City & Caracas</div>
+          <div class="card-desc">Questo progetto ha usato i codici QR sui fogli di voto ufficiali venezuelani per catalogare i voti nelle elezioni presidenziali in tempo reale, nel tentativo di salvaguardare la trasparenza elettorale. 600.000 volontari formati a trasmettere i risultati.</div>
+          <span class="card-award">🥇 Grand Prix for Good</span>
+        </div>
+      </div>
+
+      <!-- Lion Health Campaign for Good -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/jkUlZJbcEwU?rel=0" title="Caritas: Vehicle of Hope" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Lion Health Campaign for Good Grand Prix</div>
+          <div class="card-title">Vehicle of Hope</div>
+          <div class="card-agency">Caritas · Differ</div>
+          <div class="card-desc">Per aiutare a sensibilizzare sul blocco umanitario a Gaza, Caritas ha proposto di convertire la ex papamobile di Papa Francesco in una clinica mobile per bambini. Il piano ha ricevuto la benedizione personale del Papa durante gli ultimi mesi della sua vita.</div>
+          <span class="card-award">🥇 Grand Prix · Health Campaign for Good</span>
+        </div>
+      </div>
+
+      <!-- SDG -->
+      <div class="winner-card">
+        <div class="card-video" style="background:linear-gradient(135deg,#1a1a2e,#0a3d62); display:flex; align-items:center; justify-content:center; min-height:220px;">
+          <div style="padding:24px; text-align:center;">
+            <div style="font-size:48px; margin-bottom:12px;">🐄</div>
+            <div style="color:rgba(255,255,255,0.7); font-size:13px;">Paid Sick Leave for Cows</div>
+            <div style="color:rgba(255,255,255,0.4); font-size:11px; margin-top:4px;">Case study LinkedIn</div>
+          </div>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Sustainable Development Goals Grand Prix</div>
+          <div class="card-title">Paid Sick Leave for Cows</div>
+          <div class="card-agency">Too Good · The Partnership Agency, Nairobi, Kenya</div>
+          <div class="card-desc">Questo progetto offre ai contadini un compenso per il latte delle mucche che deve essere scartato durante il trattamento con antibiotici. Kenya segna così il suo primo Grand Prix storico a Cannes Lions.</div>
+          <span class="card-award">🥇 Grand Prix · SDG Lions · 🇰🇪 Kenya's First Grand Prix</span>
+        </div>
+      </div>
+
+      <!-- Health & Wellness -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://player.vimeo.com/video/1126777020?dnt=1" title="The Ordinary: The Periodic Fable" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Health & Wellness Grand Prix</div>
+          <div class="card-title">The Periodic Fable</div>
+          <div class="card-agency">The Ordinary · Uncommon Creative Studio · Smuggler</div>
+          <div class="card-desc">Questa campagna di The Ordinary evidenzia le numerose affermazioni scientifiche dubbie provenienti dall'industria della bellezza. Un'opera di onestà radicale che smonta i miti del marketing cosmetico.</div>
+          <span class="card-award">🥇 Grand Prix · Health & Wellness</span>
+        </div>
+      </div>
+
+      <!-- Pharma -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/CV7KcrlJwk8?rel=0" title="Novartis: Relax Your Tight End" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body" style="background:#2c2c2e;">
+          <div class="card-meta">Pharma Grand Prix</div>
+          <div class="card-title">Relax Your Tight End</div>
+          <div class="card-agency">Novartis · Fallon Minneapolis · Dir. Eric Wareheim</div>
+          <div class="card-desc">Lanciato durante il Super Bowl, questo spot umoristico presenta leggendari tight end NFL e Bruce Arians, sopravvissuto al cancro alla prostata, per incoraggiare gli americani a sottoporsi allo screening — usando l'umorismo del football per affrontare un tema serio.</div>
+          <span class="card-award">🥇 Grand Prix · Pharma</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════
+     SPECIAL LIONS
+══════════════════════════════════════════════ -->
+<div class="bg-white category-section" data-category="special" id="special">
+  <div class="category-block reveal">
+    <div class="category-label"><span class="dot"></span>Special Lions</div>
+    <h2>I più ambiti.</h2>
+    <div class="winners-grid">
+
+      <!-- Titanium -->
+      <div class="winner-card featured">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/NCt-lfGZcis?rel=0" title="Suncorp: Haven" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Dan Wieden Titanium Grand Prix — Il Lion più ambito</div>
+          <div class="card-title">Haven</div>
+          <div class="card-agency">Suncorp Insurance · Leo Australia</div>
+          <div class="card-desc">Haven è parte di una serie di progetti di Suncorp che mirano a ridefinire il rapporto dell'Australia con le assicurazioni — da recupero a resilienza e prevenzione. Lo strumento digitale consente agli utenti di valutare i rischi climatici per le loro proprietà e offre raccomandazioni personalizzate per prevenirli. Ha trasformato un'intera categoria di prodotto.</div>
+          <span class="card-award">🥇 Dan Wieden Titanium Grand Prix</span>
+        </div>
+      </div>
+
+      <!-- Innovation -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/HyMUBXfNT4g?rel=0" title="Adidas: Supernova Adaptive" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Innovation Grand Prix</div>
+          <div class="card-title">Supernova Adaptive</div>
+          <div class="card-agency">Adidas · TBWA\Canada</div>
+          <div class="card-desc">Adidas ha collaborato con atleti con sindrome di Down e TBWA\Canada per creare il Supernova Adaptive, la prima scarpa da corsa da performance specificamente progettata per la comunità con sindrome di Down.</div>
+          <span class="card-award">🥇 Grand Prix · Innovation</span>
+        </div>
+      </div>
+
+      <!-- Luxury -->
+      <div class="winner-card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/DhOkYSTCMUs?rel=0" title="Moncler: Warmer Together" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Luxury Grand Prix</div>
+          <div class="card-title">Warmer Together</div>
+          <div class="card-agency">Moncler · WeSayHi</div>
+          <div class="card-desc">Al Pacino e Robert De Niro sono protagonisti di questo commercial Moncler in cui discutono del significato del calore: sia in termini di connessione umana che di abbigliamento tecnico. Un incontro tra due icone per un brand iconico.</div>
+          <span class="card-award">🥇 Grand Prix · Luxury</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">🦁 Cannes Lions 2026</div>
+    <p class="footer-note">
+      Una raccolta completa di tutti i Grand Prix vincitori del Festival Internazionale della Creatività 2026.
+      Dati e case studies da Creative Review, LBBOnline, Contagious e canneslions.com.
+    </p>
+    <div class="footer-links">
+      <a href="https://www.canneslions.com" target="_blank">canneslions.com</a>
+      <a href="https://www.creativereview.co.uk" target="_blank">Creative Review</a>
+      <a href="https://lbbonline.com" target="_blank">LBBOnline</a>
+      <a href="https://www.contagious.com" target="_blank">Contagious</a>
+    </div>
+    <p style="font-size:11px; color:#c7c7cc; margin-top:24px;">© 2026 — Sito non ufficiale a scopo documentativo</p>
+  </div>
+</footer>
+
+<script>
+  // ── Filter ──
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const categorySections = document.querySelectorAll('.category-section');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      categorySections.forEach(sec => {
+        if (filter === 'all' || sec.dataset.category === filter) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // ── Scroll Reveal ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── Smooth scroll for hero CTA ──
+  document.querySelector('.hero-cta').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
