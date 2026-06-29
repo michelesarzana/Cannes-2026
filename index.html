@@ -64,27 +64,115 @@ nav{position:sticky;top:0;z-index:1000;background:var(--nav);
   transition:background var(--t),transform var(--t)}
 .hero-cta:hover{background:var(--blue2);transform:scale(1.02)}
 
+/* ===== HERO SEARCH ===== */
+.hero-search-wrap{position:relative;width:100%;max-width:640px;margin-top:8px}
+.hero-search-btn{display:flex;align-items:center;gap:12px;width:100%;background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.25);border-radius:980px;padding:13px 22px;
+  cursor:text;backdrop-filter:blur(12px);transition:background var(--t),border-color var(--t)}
+.hero-search-btn:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4)}
+.hero-search-btn svg{width:18px;height:18px;color:rgba(255,255,255,0.5);flex-shrink:0}
+.hero-search-placeholder{font-size:15px;color:rgba(255,255,255,0.45);flex:1;text-align:left}
+.hero-search-kbd{font-size:11px;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);
+  border-radius:4px;padding:2px 7px;font-family:monospace}
+
+/* SEARCH OVERLAY */
+.search-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  display:none;align-items:flex-start;justify-content:center;padding-top:80px}
+.search-overlay.open{display:flex}
+.search-modal{width:100%;max-width:760px;background:#fff;border-radius:20px;
+  box-shadow:0 32px 80px rgba(0,0,0,.4);overflow:hidden;
+  max-height:calc(100vh - 120px);display:flex;flex-direction:column}
+.search-input-row{display:flex;align-items:center;gap:0;padding:0 20px;
+  border-bottom:1px solid rgba(0,0,0,0.08)}
+.search-input-row svg{width:20px;height:20px;color:var(--mid);flex-shrink:0}
+.search-input-row input{flex:1;border:none;outline:none;font-size:18px;font-family:inherit;
+  padding:20px 14px;color:var(--black);background:transparent}
+.search-input-row input::placeholder{color:var(--light)}
+.search-close-btn{background:none;border:none;cursor:pointer;padding:8px;
+  font-size:16px;color:var(--mid);border-radius:8px;transition:background var(--t)}
+.search-close-btn:hover{background:rgba(0,0,0,0.06)}
+.search-filters-row{display:flex;gap:8px;padding:12px 20px;flex-wrap:wrap;
+  border-bottom:1px solid rgba(0,0,0,0.06);background:#fafafa}
+.search-filter-select{border:1px solid var(--light);border-radius:980px;padding:5px 12px;
+  font-size:12px;font-weight:500;font-family:inherit;color:var(--black);
+  background:#fff;cursor:pointer;outline:none;transition:border-color var(--t)}
+.search-filter-select:focus{border-color:var(--blue)}
+.search-results-area{overflow-y:auto;flex:1;padding:8px 0}
+.search-result-item{display:flex;align-items:center;gap:14px;padding:12px 20px;
+  cursor:pointer;transition:background var(--t)}
+.search-result-item:hover{background:rgba(0,0,0,0.04)}
+.search-result-thumb{width:64px;height:40px;border-radius:6px;overflow:hidden;
+  background:#1a1a2e;flex-shrink:0}
+.search-result-thumb img{width:100%;height:100%;object-fit:cover}
+.search-result-thumb-ph{width:100%;height:100%;display:flex;align-items:center;
+  justify-content:center;font-size:18px}
+.search-result-info{flex:1;min-width:0}
+.search-result-title{font-size:14px;font-weight:600;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.search-result-meta{font-size:12px;color:var(--mid);margin-top:2px}
+.search-result-medal{flex-shrink:0;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.6px;padding:3px 8px;border-radius:100px}
+.search-empty{padding:40px 20px;text-align:center;color:var(--mid);font-size:14px}
+.search-count{font-size:11px;color:var(--mid);padding:10px 20px 2px;
+  font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+
 /* ===== TRACK SECTION (home) ===== */
-.track-section{padding:64px 0;border-bottom:1px solid rgba(0,0,0,0.07)}
+.track-section{padding:56px 0;border-bottom:1px solid rgba(0,0,0,0.07)}
 .track-section:last-of-type{border-bottom:none}
 .track-inner{max-width:1280px;margin:0 auto;padding:0 24px}
-.track-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;
-  color:var(--blue);margin-bottom:6px}
-.track-title{font-size:clamp(26px,3.5vw,40px);font-weight:700;letter-spacing:-1px;margin-bottom:48px}
+.track-label{font-size:22px;font-weight:700;color:var(--blue);margin-bottom:32px;
+  letter-spacing:-.4px}
 
-/* GP SHOWCASE (home, per category) */
-.cat-block{margin-bottom:56px}
+/* CATEGORY BLOCKS (home) */
+.cat-block{margin-bottom:52px}
 .cat-block:last-child{margin-bottom:0}
 .cat-block-header{display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:18px;flex-wrap:wrap;gap:12px}
+  margin-bottom:16px;flex-wrap:wrap;gap:10px;padding-bottom:12px;
+  border-bottom:1px solid rgba(0,0,0,0.07)}
 .cat-block-name{display:flex;align-items:center;gap:10px}
-.cat-block-icon{font-size:26px}
-.cat-block-title{font-size:20px;font-weight:700;letter-spacing:-.3px}
+.cat-block-icon{font-size:24px}
+.cat-block-title{font-size:19px;font-weight:700;letter-spacing:-.3px}
 .cat-block-link{font-size:13px;color:var(--blue);text-decoration:none;font-weight:500;
-  display:flex;align-items:center;gap:4px;white-space:nowrap}
+  display:flex;align-items:center;gap:4px;white-space:nowrap;cursor:pointer}
 .cat-block-link:hover{text-decoration:underline}
-.cat-gp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;
-  margin-bottom:14px}
+
+/* TWO-COL LAYOUT inside cat-block */
+.cat-block-body{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
+.cat-gp-col{min-width:0}
+.cat-gp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.cat-medals-col{background:#fff;border-radius:16px;box-shadow:var(--shadow);
+  overflow:hidden;border:1px solid rgba(0,0,0,0.05)}
+.cat-medals-col-header{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.8px;color:var(--mid);padding:14px 16px 10px;
+  border-bottom:1px solid rgba(0,0,0,0.06);background:#fafafa}
+.mi-group{padding:10px 0 4px}
+.mi-group-label{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.8px;padding:4px 16px 6px}
+.mi-row{display:flex;align-items:center;gap:10px;padding:7px 16px;cursor:pointer;
+  transition:background var(--t)}
+.mi-row:hover{background:rgba(0,113,227,0.05)}
+.mi-thumb{width:36px;height:24px;border-radius:4px;overflow:hidden;flex-shrink:0;
+  background:#1a1a2e}
+.mi-thumb img{width:100%;height:100%;object-fit:cover}
+.mi-thumb-ph{width:100%;height:100%;display:flex;align-items:center;
+  justify-content:center;font-size:12px}
+.mi-info{min-width:0}
+.mi-title{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;color:var(--black)}
+.mi-brand{font-size:11px;color:var(--mid);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis}
+.mi-more{font-size:11px;color:var(--blue);padding:6px 16px 12px;cursor:pointer}
+.mi-more:hover{text-decoration:underline}
+
+@media(max-width:900px){.cat-block-body{grid-template-columns:1fr}}
+@media(max-width:768px){
+  .hero-stats{gap:24px}.stat-num{font-size:28px}
+  .cat-gp-grid{grid-template-columns:1fr}
+  .lucky-info-bar{flex-direction:column}
+  .search-modal{border-radius:0;max-height:100vh}
+  .search-overlay{padding-top:0;align-items:flex-start}
+}
 
 /* WIN CARDS (shared) */
 .win-card{background:#fff;border-radius:var(--r);overflow:hidden;cursor:pointer;
@@ -268,6 +356,11 @@ nav{position:sticky;top:0;z-index:1000;background:var(--nav);
 @keyframes roll{0%{transform:rotate(0)}50%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
 .dice{font-size:20px;display:inline-block}
 .lucky-hint{font-size:12px;color:rgba(255,255,255,0.25);text-align:center}
+.lucky-pills-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:-4px 0 4px}
+.lucky-pill{background:none;border:2px solid rgba(255,255,255,0.12);border-radius:980px;
+  padding:4px 6px;cursor:pointer;transition:border-color var(--t),opacity var(--t);opacity:.45}
+.lucky-pill.active{border-color:rgba(255,255,255,0.35);opacity:1}
+.lucky-pill:hover{opacity:.8}
 .lucky-scan-line{position:fixed;inset:0;pointer-events:none;z-index:2;
   background:repeating-linear-gradient(to bottom,transparent 0,transparent 3px,rgba(0,0,0,.08) 3px,rgba(0,0,0,.08) 4px);
   opacity:.3}
@@ -307,14 +400,14 @@ footer{background:#f5f5f7;border-top:1px solid rgba(0,0,0,0.08);padding:48px 24p
 // ===================== CASES =====================
 const CASES = [
 // ---- FILM LIONS ----
-{id:'claude-six-pack',cat:'film',medal:'grandprix',title:'Can I Get a Six Pack Quickly?',brand:'Anthropic / Claude',agency:'Mother London',country:'🇬🇧 UK',director:'Jeff Low',production:'Biscuit Filmworks',video:{type:'vimeo',id:'1163236978'},thumb:'',description:'<p>Due spot Super Bowl per Anthropic Claude, firmati Mother London e diretti da Jeff Low. La commedia oscura posiziona Claude come l\'AI che si impegna a non inserire messaggi commerciali nei propri strumenti.</p><p>Il jury president Pelle Sjoenell: "corporate aikido, con wit e craft in ogni frame". Doppia vittoria storica nel Film Grand Prix 2026.</p>',credits:[['Brand','Anthropic / Claude'],['Agenzia','Mother London'],['Direttore','Jeff Low'],['Produzione','Biscuit Filmworks'],['Categoria','Film Lions'],['Anno','2026']]},
-{id:'claude-mom',cat:'film',medal:'grandprix',title:'How Can I Communicate Better With My Mom?',brand:'Anthropic / Claude',agency:'Mother London',country:'🇬🇧 UK',director:'Jeff Low',production:'Biscuit Filmworks',video:{type:'vimeo',id:'1162586590'},thumb:'',description:'<p>Il secondo spot della campagna Grand Prix per Claude di Anthropic. Esplora come l\'AI possa aiutare con le relazioni familiari complesse, con la stessa ironia del primo film.</p>',credits:[['Brand','Anthropic / Claude'],['Agenzia','Mother London'],['Direttore','Jeff Low'],['Produzione','Biscuit Filmworks'],['Categoria','Film Lions'],['Anno','2026']]},
+{id:'claude-six-pack',cat:'film',medal:'grandprix',title:'Can I Get a Six Pack Quickly?',brand:'Anthropic / Claude',agency:'Mother London',country:'🇬🇧 UK',director:'Jeff Low',production:'Biscuit Filmworks',video:{type:'vimeo',id:'1163236978'},thumb:'https://vumbnail.com/1163236978.jpg',description:'<p>Due spot Super Bowl per Anthropic Claude, firmati Mother London e diretti da Jeff Low. La commedia oscura posiziona Claude come l\'AI che si impegna a non inserire messaggi commerciali nei propri strumenti.</p><p>Il jury president Pelle Sjoenell: "corporate aikido, con wit e craft in ogni frame". Doppia vittoria storica nel Film Grand Prix 2026.</p>',credits:[['Brand','Anthropic / Claude'],['Agenzia','Mother London'],['Direttore','Jeff Low'],['Produzione','Biscuit Filmworks'],['Categoria','Film Lions'],['Anno','2026']]},
+{id:'claude-mom',cat:'film',medal:'grandprix',title:'How Can I Communicate Better With My Mom?',brand:'Anthropic / Claude',agency:'Mother London',country:'🇬🇧 UK',director:'Jeff Low',production:'Biscuit Filmworks',video:{type:'vimeo',id:'1162586590'},thumb:'https://vumbnail.com/1162586590.jpg',description:'<p>Il secondo spot della campagna Grand Prix per Claude di Anthropic. Esplora come l\'AI possa aiutare con le relazioni familiari complesse, con la stessa ironia del primo film.</p>',credits:[['Brand','Anthropic / Claude'],['Agenzia','Mother London'],['Direttore','Jeff Low'],['Produzione','Biscuit Filmworks'],['Categoria','Film Lions'],['Anno','2026']]},
 {id:'coinbase-way-out',cat:'film',medal:'gold',title:'Your Way Out',brand:'Coinbase',agency:'Isle of Any, New York',country:'🇺🇸 USA',video:{type:'youtube',id:'spmjIn5NaV0'},thumb:'https://img.youtube.com/vi/spmjIn5NaV0/maxresdefault.jpg',description:'<p>Uno spot girato interamente in camera — senza CGI — che simula un mondo di videogioco. Ha vinto anche il Film Craft Grand Prix per la qualità artigianale straordinaria.</p>',credits:[['Brand','Coinbase'],['Agenzia','Isle of Any, New York'],['Categoria','Film Lions'],['Medaglia','Gold Lion']]},
-{id:'hornbach-drama',cat:'film',medal:'gold',title:'No Project Without Drama',brand:'Hornbach',agency:'Heimat TBWA\\Berlin',country:'🇩🇪 Germania',video:null,thumb:'https://img.youtube.com/vi/hvH4j_8UMcc/maxresdefault.jpg',description:'<p>Quattro spot per il rivenditore fai-da-te Hornbach che esplora i drammi emotivi del bricolage con ironia e pathos. Premiato con Gold sia in Film che in Film Craft.</p>',credits:[['Brand','Hornbach'],['Agenzia','Heimat TBWA\\Berlin'],['Categoria','Film Lions']]},
+{id:'hornbach-drama',cat:'film',medal:'gold',title:'No Project Without Drama',brand:'Hornbach',agency:'Heimat TBWA\\Berlin',country:'🇩🇪 Germania',video:{type:'youtube',id:'hvH4j_8UMcc'},thumb:'https://img.youtube.com/vi/hvH4j_8UMcc/hqdefault.jpg',description:'<p>Quattro spot per il rivenditore fai-da-te Hornbach che esplora i drammi emotivi del bricolage con ironia e pathos. Premiato con Gold sia in Film che in Film Craft.</p>',credits:[['Brand','Hornbach'],['Agenzia','Heimat TBWA\\Berlin'],['Categoria','Film Lions']]},
 {id:'life360-dying',cat:'film',medal:'gold',title:'I Think of You Dying',brand:'Life360',agency:'Alto New York',country:'🇺🇸 USA',video:null,thumb:'',description:'<p>Un film emotivo per l\'app di sicurezza familiare Life360 che esplora le ansie universali dei genitori.</p>',credits:[['Brand','Life360'],['Agenzia','Alto New York'],['Categoria','Film Lions']]},
 {id:'missing-people',cat:'film',medal:'gold',title:'Missing People',brand:'Missing People',agency:'BBH London',country:'🇬🇧 UK',video:null,thumb:'',description:'<p>Una campagna di BBH London per l\'organizzazione che aiuta a trovare le persone scomparse nel Regno Unito.</p>',credits:[['Brand','Missing People'],['Agenzia','BBH London'],['Categoria','Film Lions']]},
 {id:'bullet-machine',cat:'film',medal:'gold',title:'Bullet Machine',brand:'La Unión / Article 19',agency:'Grey Mexico City',country:'🇲🇽 Messico',video:null,thumb:'',description:'<p>Denuncia la violenza contro i giornalisti messicani con la metafora della "macchina delle pallottole". Gold in Film e Film Craft.</p>',credits:[['Brand','La Unión / Article 19'],['Agenzia','Grey Mexico City'],['Categoria','Film Lions']]},
-{id:'dove-code',cat:'film',medal:'silver',title:'The Code',brand:'Dove',agency:'Ogilvy London',country:'🇬🇧 UK',video:{type:'youtube',id:''},thumb:'https://img.youtube.com/vi/XzZbmTe0UtY/maxresdefault.jpg',description:'<p>Dove e Ogilvy svelano il "codice" dell\'algoritmo che rende tossici i canoni di bellezza per le adolescenti — una continuazione potente della campagna Real Beauty nell\'era digitale.</p>',credits:[['Brand','Dove'],['Agenzia','Ogilvy London'],['Categoria','Film Lions'],['Medaglia','Silver Lion']]},
+{id:'dove-code',cat:'film',medal:'silver',title:'The Code',brand:'Dove',agency:'Ogilvy London',country:'🇬🇧 UK',video:{type:'youtube',id:'XzZbmTe0UtY'},thumb:'https://img.youtube.com/vi/XzZbmTe0UtY/hqdefault.jpg',description:'<p>Dove e Ogilvy svelano il "codice" dell\'algoritmo che rende tossici i canoni di bellezza per le adolescenti — una continuazione potente della campagna Real Beauty nell\'era digitale.</p>',credits:[['Brand','Dove'],['Agenzia','Ogilvy London'],['Categoria','Film Lions'],['Medaglia','Silver Lion']]},
 {id:'mcdonalds-wcdonald',cat:'film',medal:'silver',title:'WcDonald\'s',brand:"McDonald's",agency:'Leo Burnett Chicago',country:'🇺🇸 USA',video:{type:'youtube',id:'7kZyPlTCo3U'},thumb:'https://img.youtube.com/vi/7kZyPlTCo3U/maxresdefault.jpg',description:'<p>McDonald\'s ha trasformato la sua versione "anime" (WcDonald\'s, come appare nei manga giapponesi) in una campagna globale con una serie animata originale e packaging limitato.</p>',credits:[['Brand',"McDonald's"],['Agenzia','Leo Burnett Chicago'],['Categoria','Film Lions'],['Medaglia','Silver Lion']]},
 {id:'vw-drive',cat:'film',medal:'silver',title:'The Last Drive',brand:'Volkswagen',agency:'DDB Berlin',country:'🇩🇪 Germania',video:null,thumb:'',description:'<p>Un film poetico che celebra il legame tra conducente e automobile in un\'era di transizione verso l\'elettrico. DDB Berlin racconta l\'addio al motore a combustione con malinconia e speranza.</p>',credits:[['Brand','Volkswagen'],['Agenzia','DDB Berlin'],['Categoria','Film Lions'],['Medaglia','Silver Lion']]},
 {id:'guinness-bartender',cat:'film',medal:'bronze',title:'The Bartender',brand:'Guinness',agency:'AMV BBDO London',country:'🇮🇪 Irlanda',video:null,thumb:'',description:'<p>Un film che celebra il rituale del versare una Guinness perfetta, con il bartender come protagonista silenzioso di una storia universale.</p>',credits:[['Brand','Guinness'],['Agenzia','AMV BBDO London'],['Categoria','Film Lions'],['Medaglia','Bronze Lion']]},
@@ -325,7 +418,7 @@ const CASES = [
 {id:'asap-helicopter',cat:'filmcraft',medal:'gold',title:'Helicopter',brand:"A$AP Rocky",agency:'Anonymous Content',country:'🇺🇸 USA',video:null,thumb:'',description:'<p>Videoclip con regia e fotografia di altissimo livello. La jury ha premiato l\'approccio cinematografico che porta il music video a vette rarissime.</p>',credits:[['Artista',"A$AP Rocky"],['Produzione','Anonymous Content'],['Categoria','Film Craft Lions'],['Medaglia','Gold Lion']]},
 {id:'hornbach-craft',cat:'filmcraft',medal:'gold',title:'No Project Without Drama',brand:'Hornbach',agency:'Heimat TBWA\\Berlin',country:'🇩🇪 Germania',video:null,thumb:'',description:'<p>Doppio riconoscimento per Hornbach: Gold anche in Film Craft per l\'eccezionale qualità produttiva dei quattro spot.</p>',credits:[['Brand','Hornbach'],['Agenzia','Heimat TBWA\\Berlin'],['Categoria','Film Craft Lions'],['Medaglia','Gold Lion']]},
 {id:'bulletmachine-craft',cat:'filmcraft',medal:'gold',title:'Bullet Machine',brand:'La Unión / Article 19',agency:'Grey Mexico City',country:'🇲🇽 Messico',video:null,thumb:'',description:'<p>Gold Film Craft per la potenza visiva e tecnica con cui Grey Mexico City ha raccontato la violenza contro i giornalisti.</p>',credits:[['Brand','La Unión / Article 19'],['Agenzia','Grey Mexico City'],['Categoria','Film Craft Lions'],['Medaglia','Gold Lion']]},
-{id:'nike-craft',cat:'filmcraft',medal:'silver',title:'Winning Isn\'t for Everyone',brand:'Nike',agency:'Wieden+Kennedy Portland',country:'🇺🇸 USA',video:{type:'youtube',id:'xAqRGqMlBZI'},thumb:'https://img.youtube.com/vi/xAqRGqMlBZI/maxresdefault.jpg',description:'<p>Il film olimpico di Nike narrato da Willem Dafoe nei panni di un villain che celebra l\'ossessione per la vittoria. Silver Film Craft per la regia potente e la performance vocale.</p>',credits:[['Brand','Nike'],['Agenzia','Wieden+Kennedy Portland'],['Voce','Willem Dafoe'],['Categoria','Film Craft Lions'],['Medaglia','Silver Lion']]},
+{id:'nike-craft',cat:'filmcraft',medal:'silver',title:'Winning Isn\'t for Everyone',brand:'Nike',agency:'Wieden+Kennedy Portland',country:'🇺🇸 USA',video:{type:'youtube',id:'xAqRGqMlBZI'},thumb:'https://img.youtube.com/vi/xAqRGqMlBZI/hqdefault.jpg',description:'<p>Il film olimpico di Nike narrato da Willem Dafoe nei panni di un villain che celebra l\'ossessione per la vittoria. Silver Film Craft per la regia potente e la performance vocale.</p>',credits:[['Brand','Nike'],['Agenzia','Wieden+Kennedy Portland'],['Voce','Willem Dafoe'],['Categoria','Film Craft Lions'],['Medaglia','Silver Lion']]},
 {id:'ikea-craft',cat:'filmcraft',medal:'bronze',title:'Hope, Mornings and Picky',brand:'IKEA',agency:'',country:'🇸🇪 Svezia',video:null,thumb:'',description:'<p>Tre spot IKEA che celebrano i rituali domestici con una qualità cinematografica notevole. Bronze Film Craft.</p>',credits:[['Brand','IKEA'],['Categoria','Film Craft Lions'],['Medaglia','Bronze Lion']]},
 
 // ---- DIGITAL CRAFT ----
@@ -369,7 +462,7 @@ const CASES = [
 {id:'mcdonalds-audio',cat:'audio',medal:'bronze',title:'Senza Parole',brand:"McDonald's",agency:'TBWA Paris',country:'🇫🇷 Francia',video:null,thumb:'',description:'<p>Spot radio dove i suoni iconici di McDonald\'s (patatine che cadono, bibita che viene versata, il bip del forno) raccontano l\'esperienza senza una parola. Bronze Audio.</p>',credits:[['Brand',"McDonald's"],['Agenzia','TBWA Paris'],['Categoria','Audio & Radio Lions'],['Medaglia','Bronze Lion']]},
 
 // ---- HEALTH & WELLNESS ----
-{id:'ordinary-periodic-fable',cat:'health',medal:'grandprix',title:'The Periodic Fable',brand:'The Ordinary',agency:'Uncommon Creative Studio',country:'🇬🇧 UK',video:{type:'vimeo',id:'1126777020'},thumb:'',description:'<p>Una favola satirica che smonta le affermazioni pseudo-scientifiche dell\'industria beauty. The Ordinary usa la tavola periodica come metafora della scienza vera contro il marketing.</p>',credits:[['Brand','The Ordinary'],['Agenzia','Uncommon Creative Studio'],['Produzione','Smuggler'],['Categoria','Health & Wellness Lions'],['Medaglia','Grand Prix']]},
+{id:'ordinary-periodic-fable',cat:'health',medal:'grandprix',title:'The Periodic Fable',brand:'The Ordinary',agency:'Uncommon Creative Studio',country:'🇬🇧 UK',video:{type:'vimeo',id:'1126777020'},thumb:'https://vumbnail.com/1126777020.jpg',description:'<p>Una favola satirica che smonta le affermazioni pseudo-scientifiche dell\'industria beauty. The Ordinary usa la tavola periodica come metafora della scienza vera contro il marketing.</p>',credits:[['Brand','The Ordinary'],['Agenzia','Uncommon Creative Studio'],['Produzione','Smuggler'],['Categoria','Health & Wellness Lions'],['Medaglia','Grand Prix']]},
 {id:'kotex-period',cat:'health',medal:'gold',title:"Art's Missing Period",brand:'Kotex',agency:'Ogilvy Singapore',country:'🇸🇬 Singapore',video:null,thumb:'',description:'<p>Evidenzia come la storia dell\'arte abbia sistematicamente eliminato le rappresentazioni del ciclo mestruale. L\'opera chiede di reintegrare questo "periodo mancante" nella narrativa artistica.</p>',credits:[['Brand','Kotex'],['Agenzia','Ogilvy Singapore'],['Categoria','Health & Wellness Lions'],['Medaglia','Gold Lion']]},
 {id:'fuck-cancer',cat:'health',medal:'gold',title:'Beat Cancer Off',brand:'Fuck Cancer',agency:'VML New York',country:'🇺🇸 USA',video:null,thumb:'',description:'<p>Una campagna audace che usa l\'umorismo per abbassare le barriere psicologiche verso screening e controlli medici.</p>',credits:[['Brand','Fuck Cancer'],['Agenzia','VML New York & VML Health'],['Categoria','Health & Wellness Lions'],['Medaglia','Gold Lion']]},
 {id:'caritas-vehicle-hope',cat:'health',medal:'gold',title:'Vehicle of Hope',brand:'Caritas',agency:'Differ',country:'🌍 Internazionale',video:{type:'youtube',id:'jkUlZJbcEwU'},thumb:'https://img.youtube.com/vi/jkUlZJbcEwU/maxresdefault.jpg',description:'<p>Convertire la ex papamobile di Papa Francesco in una clinica mobile per bambini a Gaza. L\'iniziativa ricevette la benedizione personale del Papa e fu lanciata dopo il suo funerale.</p>',credits:[['Brand','Caritas'],['Agenzia','Differ'],['Categoria','Health & Wellness Lions'],['Medaglia','Gold Lion']]},
@@ -615,6 +708,102 @@ function winCard(c,catIcon,full){
 </div>`;
 }
 
+// ===================== SEARCH =====================
+window._search={q:'',medal:'',cat:'',country:'',agency:''};
+
+function openSearch(){
+  document.getElementById('search-overlay').classList.add('open');
+  document.getElementById('search-input').focus();
+  runSearch();
+}
+function closeSearch(){
+  document.getElementById('search-overlay').classList.remove('open');
+}
+function handleSearchInput(val){
+  window._search.q=val;
+  runSearch();
+}
+function handleFilterChange(key,val){
+  window._search[key]=val;
+  runSearch();
+}
+function runSearch(){
+  const {q,medal,cat,country,agency}=window._search;
+  const ql=q.toLowerCase().trim();
+  let results=CASES.filter(c=>{
+    if(medal&&c.medal!==medal) return false;
+    if(cat&&c.cat!==cat) return false;
+    if(country&&!(c.country||'').toLowerCase().includes(country.toLowerCase())) return false;
+    if(agency&&!(c.agency||'').toLowerCase().includes(agency.toLowerCase())) return false;
+    if(ql&&![c.title,c.brand,c.agency,c.country,c.cat].join(' ').toLowerCase().includes(ql)) return false;
+    return true;
+  });
+  const area=document.getElementById('search-results');
+  if(!area) return;
+  if(!results.length){
+    area.innerHTML=`<div class="search-empty">Nessun risultato trovato per i filtri selezionati.</div>`;
+    return;
+  }
+  const count=document.getElementById('search-count');
+  if(count) count.textContent=`${results.length} risultat${results.length===1?'o':'i'}`;
+  area.innerHTML=results.map(c=>{
+    const cat=getCat(c.cat);
+    const thumb=thumbURL(c);
+    return`<div class="search-result-item" onclick="closeSearch();navigate('/case/${c.id}')">
+      <div class="search-result-thumb">
+        ${thumb?`<img src="${thumb}" alt="" loading="lazy">`:`<div class="search-result-thumb-ph">${cat?.icon||'🏆'}</div>`}
+      </div>
+      <div class="search-result-info">
+        <div class="search-result-title">${c.title}</div>
+        <div class="search-result-meta">${c.brand}${c.agency?' · '+c.agency:''} · ${cat?.name||c.cat} ${c.country||''}</div>
+      </div>
+      <span class="search-result-medal ${medalClass(c.medal)}">${medalLabel(c.medal)}</span>
+    </div>`;
+  }).join('');
+}
+
+// Build search overlay HTML (injected once into body)
+function injectSearchOverlay(){
+  const catOptions=CATEGORIES.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');
+  const countries=[...new Set(CASES.map(c=>c.country).filter(Boolean))].sort();
+  const countryOptions=countries.map(c=>`<option value="${c}">${c}</option>`).join('');
+  const overlay=document.createElement('div');
+  overlay.className='search-overlay';
+  overlay.id='search-overlay';
+  overlay.onclick=e=>{if(e.target===overlay)closeSearch();};
+  overlay.innerHTML=`
+<div class="search-modal">
+  <div class="search-input-row">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input id="search-input" type="text" placeholder="Cerca case study, brand, agenzia…"
+      oninput="handleSearchInput(this.value)"
+      onkeydown="if(event.key==='Escape')closeSearch()">
+    <button class="search-close-btn" onclick="closeSearch()">✕</button>
+  </div>
+  <div class="search-filters-row">
+    <select class="search-filter-select" onchange="handleFilterChange('medal',this.value)">
+      <option value="">Tutti i premi</option>
+      <option value="grandprix">🏆 Grand Prix</option>
+      <option value="gold">🥇 Gold Lion</option>
+      <option value="silver">🥈 Silver Lion</option>
+      <option value="bronze">🥉 Bronze Lion</option>
+    </select>
+    <select class="search-filter-select" onchange="handleFilterChange('cat',this.value)">
+      <option value="">Tutte le categorie</option>${catOptions}
+    </select>
+    <select class="search-filter-select" onchange="handleFilterChange('country',this.value)">
+      <option value="">Tutti i paesi</option>${countryOptions}
+    </select>
+    <input class="search-filter-select" type="text" placeholder="Agenzia…"
+      oninput="handleFilterChange('agency',this.value)"
+      style="width:140px;border-radius:980px;padding:5px 12px;font-size:12px;outline:none">
+  </div>
+  <div class="search-count" id="search-count"></div>
+  <div class="search-results-area" id="search-results"></div>
+</div>`;
+  document.body.appendChild(overlay);
+}
+
 // ===================== HOME =====================
 function renderHome(){
   navMode('home');
@@ -630,7 +819,16 @@ function renderHome(){
     <div><div class="stat-num">32</div><div class="stat-label">Grand Prix</div></div>
     <div><div class="stat-num">800+</div><div class="stat-label">Lions</div></div>
   </div>
-  <button class="hero-cta" onclick="document.getElementById('tracks').scrollIntoView({behavior:'smooth'})">Esplora i vincitori</button>
+  <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center">
+    <button class="hero-cta" onclick="document.getElementById('tracks').scrollIntoView({behavior:'smooth'})">Esplora i vincitori</button>
+    <div class="hero-search-wrap">
+      <div class="hero-search-btn" onclick="openSearch()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span class="hero-search-placeholder">Cerca case, brand, agenzia…</span>
+        <span class="hero-search-kbd">⌘K</span>
+      </div>
+    </div>
+  </div>
 </section>
 <div id="tracks">`;
 
@@ -639,11 +837,15 @@ function renderHome(){
     if(!cats.length) return;
     const track=TRACKS[trackId];
     html+=`<div class="track-section reveal"><div class="track-inner">
-      <div class="track-label">${track.name}</div>
-      <div class="track-title">${cats.length===1?cats[0].name:cats.map(c=>c.icon+' '+c.name).join(' &nbsp;·&nbsp; ')}</div>`;
+      <div class="track-label">${track.name}</div>`;
 
     cats.forEach(cat=>{
-      const gp=CASES.filter(c=>c.cat===cat.id&&c.medal==='grandprix');
+      const catCases=CASES.filter(c=>c.cat===cat.id);
+      const gp=catCases.filter(c=>c.medal==='grandprix');
+      const gold=catCases.filter(c=>c.medal==='gold');
+      const silver=catCases.filter(c=>c.medal==='silver');
+      const bronze=catCases.filter(c=>c.medal==='bronze');
+
       html+=`<div class="cat-block">
         <div class="cat-block-header">
           <div class="cat-block-name">
@@ -651,21 +853,70 @@ function renderHome(){
             <span class="cat-block-title">${cat.name}</span>
             <span class="track-badge tb-${cat.track}">${track.name}</span>
           </div>
-          <a class="cat-block-link" onclick="navigate('/category/${cat.id}')">
-            Tutti i vincitori &rarr;
-          </a>
-        </div>`;
+          <span class="cat-block-link" onclick="navigate('/category/${cat.id}')">Tutti i vincitori &rarr;</span>
+        </div>
+        <div class="cat-block-body">
+          <div class="cat-gp-col">
+            ${gp.length
+              ? `<div class="cat-gp-grid">${gp.map(c=>winCard(c,cat.icon,false)).join('')}</div>`
+              : `<div style="font-size:13px;color:var(--mid);padding:12px 0">Nessun Grand Prix assegnato in questa categoria</div>`
+            }
+          </div>
+          <div class="cat-medals-col">
+            <div class="cat-medals-col-header">${cat.icon} ${cat.name} — Lions assegnati</div>`;
 
-      if(gp.length){
-        html+=`<div class="cat-gp-grid">`;
-        gp.forEach(c=>{ html+=winCard(c,cat.icon,gp.length===1); });
+      // Gold rows
+      if(gold.length){
+        html+=`<div class="mi-group"><div class="mi-group-label" style="color:#b8860b">🥇 Gold Lion</div>`;
+        gold.slice(0,5).forEach(c=>{
+          const t=thumbURL(c);
+          html+=`<div class="mi-row" onclick="navigate('/case/${c.id}')">
+            <div class="mi-thumb">${t?`<img src="${t}" alt="" loading="lazy">`:`<div class="mi-thumb-ph">${cat.icon}</div>`}</div>
+            <div class="mi-info"><div class="mi-title">${c.title}</div><div class="mi-brand">${c.brand}</div></div>
+          </div>`;
+        });
+        if(gold.length>5) html+=`<div class="mi-more" onclick="navigate('/category/${cat.id}')">+${gold.length-5} altri →</div>`;
         html+=`</div>`;
-      } else {
-        html+=`<div style="font-size:13px;color:var(--mid);padding:8px 0 4px">
-          ${cat.counts.gold} Gold · ${cat.counts.silver} Silver · ${cat.counts.bronze} Bronze
-        </div>`;
+      } else if(cat.counts.gold>0){
+        html+=`<div class="mi-group"><div class="mi-group-label" style="color:#b8860b">🥇 Gold Lion</div>
+          <div class="mi-more" onclick="navigate('/category/${cat.id}')">${cat.counts.gold} Gold Lions → Vedi tutti</div></div>`;
       }
-      html+=`</div>`; // cat-block
+
+      // Silver rows
+      if(silver.length){
+        html+=`<div class="mi-group"><div class="mi-group-label" style="color:#666">🥈 Silver Lion</div>`;
+        silver.slice(0,4).forEach(c=>{
+          const t=thumbURL(c);
+          html+=`<div class="mi-row" onclick="navigate('/case/${c.id}')">
+            <div class="mi-thumb">${t?`<img src="${t}" alt="" loading="lazy">`:`<div class="mi-thumb-ph">${cat.icon}</div>`}</div>
+            <div class="mi-info"><div class="mi-title">${c.title}</div><div class="mi-brand">${c.brand}</div></div>
+          </div>`;
+        });
+        if(cat.counts.silver>silver.length) html+=`<div class="mi-more" onclick="navigate('/category/${cat.id}')">+${cat.counts.silver-silver.length} Silver →</div>`;
+        html+=`</div>`;
+      } else if(cat.counts.silver>0){
+        html+=`<div class="mi-group"><div class="mi-group-label" style="color:#666">🥈 Silver Lion</div>
+          <div class="mi-more" onclick="navigate('/category/${cat.id}')">${cat.counts.silver} Silver Lions → Vedi tutti</div></div>`;
+      }
+
+      // Bronze rows
+      if(bronze.length){
+        html+=`<div class="mi-group"><div class="mi-group-label" style="color:#8d6e63">🥉 Bronze Lion</div>`;
+        bronze.slice(0,3).forEach(c=>{
+          const t=thumbURL(c);
+          html+=`<div class="mi-row" onclick="navigate('/case/${c.id}')">
+            <div class="mi-thumb">${t?`<img src="${t}" alt="" loading="lazy">`:`<div class="mi-thumb-ph">${cat.icon}</div>`}</div>
+            <div class="mi-info"><div class="mi-title">${c.title}</div><div class="mi-brand">${c.brand}</div></div>
+          </div>`;
+        });
+        if(cat.counts.bronze>bronze.length) html+=`<div class="mi-more" onclick="navigate('/category/${cat.id}')">+${cat.counts.bronze-bronze.length} Bronze →</div>`;
+        html+=`</div>`;
+      } else if(cat.counts.bronze>0){
+        html+=`<div class="mi-group"><div class="mi-group-label" style="color:#8d6e63">🥉 Bronze Lion</div>
+          <div class="mi-more" onclick="navigate('/category/${cat.id}')">${cat.counts.bronze} Bronze Lions → Vedi tutti</div></div>`;
+      }
+
+      html+=`</div></div></div>`; // cat-medals-col / cat-block-body / cat-block
     });
 
     html+=`</div></div>`; // track-inner / track-section
@@ -831,47 +1082,93 @@ function renderCase(caseId){
 }
 
 // ===================== LUCKY PAGE =====================
-let luckyIndex=-1;
+window._luckyFilters={grandprix:true,gold:true,silver:false,bronze:false};
+
+function luckyBuildPool(){
+  const f=window._luckyFilters;
+  const pool=CASES.filter(c=>f[c.medal]);
+  window._luckyShuffled=[...pool].sort(()=>Math.random()-.5);
+  window._luckyIdx=-1;
+  // update counter
+  const cnt=document.getElementById('lucky-counter');
+  if(cnt) cnt.textContent=`${pool.length} case nel pool • Premi per estrarne uno`;
+}
+
+function luckyToggleMedal(medal){
+  window._luckyFilters[medal]=!window._luckyFilters[medal];
+  // keep at least one active
+  if(!Object.values(window._luckyFilters).some(Boolean)){
+    window._luckyFilters[medal]=true; return;
+  }
+  // update pill UI
+  document.querySelectorAll('.lucky-pill').forEach(el=>{
+    const m=el.dataset.medal;
+    el.classList.toggle('active',!!window._luckyFilters[m]);
+  });
+  luckyBuildPool();
+  // reset showcase
+  const sc=document.getElementById('lucky-showcase');
+  if(sc){
+    sc.innerHTML=`<div class="lucky-no-media">🦁</div>
+    <div class="lucky-info-bar"><div class="lucky-info-left">
+      <div class="lucky-info-title" style="color:rgba(255,255,255,0.3);font-style:italic">Pool aggiornato — estrai un nuovo vincitore…</div>
+    </div></div>`;
+  }
+  const btn=document.getElementById('lucky-btn');
+  if(btn) btn.innerHTML=`<span class="dice">🎲</span> Estrai un vincitore`;
+}
+
 function renderLucky(){
   navMode('back');
-  const validCases=CASES.filter(c=>c.medal==='grandprix'||c.medal==='gold');
 
-  // Generate starfield HTML
+  // Generate starfield
   let stars='';
   for(let i=0;i<80;i++){
-    const size=Math.random()*3+1;
-    const x=Math.random()*100, y=Math.random()*100;
+    const size=Math.random()*3+1, x=Math.random()*100, y=Math.random()*100;
     const d=Math.random()*4+2, del=Math.random()*4;
     stars+=`<span style="width:${size}px;height:${size}px;left:${x}%;top:${y}%;--d:${d}s;--del:${del}s"></span>`;
   }
 
-  // Build filmstrip frames
-  const ytCases=validCases.filter(c=>c.video?.type==='youtube'&&c.video.id);
-  let frames='', holes='';
-  const dupFrames=[...ytCases,...ytCases];
-  dupFrames.forEach(c=>{
-    holes+=`<div class="filmstrip-hole"></div>`;
-    frames+=`<div class="filmstrip-frame"><img src="${yt(c.video.id)}" loading="lazy" alt=""></div>`;
-    holes+=`<div class="filmstrip-hole"></div>`;
+  // Filmstrip — use all YT cases
+  const ytCases=CASES.filter(c=>c.video?.type==='youtube'&&c.video.id);
+  let frames='';
+  [...ytCases,...ytCases].forEach(c=>{
+    frames+=`<div class="filmstrip-hole"></div>
+    <div class="filmstrip-frame"><img src="${yt(c.video.id)}" loading="lazy" alt=""></div>
+    <div class="filmstrip-hole"></div>`;
   });
+
+  // Medal pills
+  const pills=[
+    {medal:'grandprix',label:'Grand Prix',cls:'wm-gp'},
+    {medal:'gold',label:'Gold Lion',cls:'wm-gold'},
+    {medal:'silver',label:'Silver Lion',cls:'wm-silver'},
+    {medal:'bronze',label:'Bronze Lion',cls:'wm-bronze'},
+  ];
+  const pillsHtml=pills.map(p=>`
+    <button class="lucky-pill ${window._luckyFilters[p.medal]?'active':''}"
+      data-medal="${p.medal}" onclick="luckyToggleMedal('${p.medal}')">
+      <span class="win-medal ${p.cls}" style="pointer-events:none">${p.label}</span>
+    </button>`).join('');
 
   document.getElementById('app').innerHTML=`
 <div class="lucky-page">
   <div class="lucky-scan-line"></div>
   <div class="lucky-stars">${stars}</div>
   <div class="lucky-filmstrip">
-    <div class="filmstrip-track" id="filmstrip">${frames}${frames}</div>
+    <div class="filmstrip-track">${frames}</div>
   </div>
   <div class="lucky-main">
     <div class="lucky-header">
-      <div class="lucky-counter" id="lucky-counter">Premi il dado per estrarre un vincitore</div>
       <div class="lucky-eyebrow">🦁 Cannes Lions 2026 — I'm Feeling Lucky</div>
+      <div class="lucky-counter" id="lucky-counter">Caricamento…</div>
     </div>
+    <div class="lucky-pills-row">${pillsHtml}</div>
     <div class="lucky-showcase" id="lucky-showcase">
       <div class="lucky-no-media">🦁</div>
       <div class="lucky-info-bar">
         <div class="lucky-info-left">
-          <div class="lucky-info-title" style="color:rgba(255,255,255,0.3);font-style:italic">Estrai il primo vincitore…</div>
+          <div class="lucky-info-title" style="color:rgba(255,255,255,0.3);font-style:italic">Seleziona i premi e premi il dado…</div>
         </div>
       </div>
     </div>
@@ -879,14 +1176,12 @@ function renderLucky(){
       <button class="lucky-roll-btn" id="lucky-btn" onclick="luckyRoll()">
         <span class="dice">🎲</span> Estrai un vincitore
       </button>
-      <div class="lucky-hint">Ogni estrazione è casuale • Premi di nuovo per un nuovo vincitore</div>
+      <div class="lucky-hint">Ogni estrazione è casuale · ⌘K per cercare · tasto di nuovo per il prossimo</div>
     </div>
   </div>
 </div>`;
 
-  window._luckyPool=validCases;
-  window._luckyIdx=-1;
-  window._luckyShuffled=[...validCases].sort(()=>Math.random()-.5);
+  luckyBuildPool();
 }
 
 function luckyRoll(){
@@ -943,6 +1238,15 @@ function route(){
 }
 
 window.addEventListener('hashchange',route);
+
+// ⌘K shortcut
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();openSearch();}
+  if(e.key==='Escape'){closeSearch();}
+});
+
+// Inject search overlay once on load
+injectSearchOverlay();
 route();
 </script>
 </body>
