@@ -173,16 +173,18 @@ nav{position:sticky;top:0;z-index:1000;background:var(--nav);
 
 @media(max-width:900px){
   .cat-block-body{grid-template-columns:1fr;align-items:start}
+  .cat-block-body.multi-gp{grid-template-columns:1fr}
   .cat-gp-col{display:block}
   .cat-gp-grid{flex:none}
   .cat-gp-grid:not(.multi) .win-card{height:auto}
   .cat-gp-grid:not(.multi) .win-thumb{max-height:none}
   .cat-medals-col{margin-top:16px}
-  /* Multi-GP (es. Film Lions con 2 GP): su tablet collassa a 1 colonna */
+  /* Multi-GP (es. Film Lions con 2 GP): su mobile collassa a 1 colonna */
   .cat-gp-grid.multi{grid-template-columns:1fr}
 }
 @media(max-width:768px){
   .hero-stats{gap:24px}.stat-num{font-size:28px}
+  .cat-block-body.multi-gp{grid-template-columns:1fr}
   .cat-gp-grid{grid-template-columns:1fr}
   .cat-gp-grid.multi{grid-template-columns:1fr}
   .lucky-info-bar{flex-direction:column}
