@@ -2124,15 +2124,33 @@ function openSuggest(){
 function closeSuggest(){
   document.getElementById('suggest-overlay').classList.remove('open');
 }
-function sendSuggest(){
+async function sendSuggest(){
   const txt=document.getElementById('suggest-text').value.trim();
   if(!txt)return;
-  const subject=encodeURIComponent('Suggerimento — Cannes Lions 2026');
-  const body=encodeURIComponent(txt);
-  window.location.href=`mailto:michele.sarzana@gmail.com?subject=${subject}&body=${body}`;
-  document.getElementById('suggest-thanks').style.display='block';
-  document.querySelector('.suggest-actions').style.display='none';
-  setTimeout(closeSuggest,2200);
+  const btn=document.getElementById('suggest-send');
+  btn.textContent='Invio…';btn.disabled=true;
+  try{
+    const res=await fetch('https://formsubmit.co/ajax/michele.sarzana@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'💡 Suggerimento — Cannes Lions 2026',
+        messaggio:txt,
+        _captcha:'false',
+        _template:'box'
+      })
+    });
+    const data=await res.json();
+    if(data.success==='true'||data.success===true){
+      document.getElementById('suggest-thanks').style.display='block';
+      document.querySelector('.suggest-actions').style.display='none';
+      setTimeout(closeSuggest,2200);
+    }else{throw new Error('failed');}
+  }catch(e){
+    btn.textContent='Riprova';btn.disabled=false;
+    btn.style.background='#ff3b30';
+    setTimeout(()=>{btn.style.background='#0071e3';btn.textContent='Invia';},2000);
+  }
 }
 </script>
 </body>
